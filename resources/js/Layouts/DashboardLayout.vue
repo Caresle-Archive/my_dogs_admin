@@ -2,23 +2,59 @@
 import {
     Navbar,
     NavbarCollapse,
+    Avatar,
+    Dropdown,
+    ListGroup,
+    ListGroupItem,
 } from 'flowbite-vue';
-import { Link } from '@inertiajs/vue3';
+import CustomLink from '@/Components/General/CustomLink.vue';
+import SwitchTheme from '@/Components/Theme/SwitchTheme.vue';
+import {
+    mdiAccountGroup,
+    mdiAccountKey,
+    mdiDog,
+    mdiDogSide,
+    mdiHome,
+    mdiAccount,
+    mdiLogout,
+} from '@mdi/js';
 </script>
 
 <template>
     <main>
-        <Navbar>
+        <Navbar solid>
             <template #default="{isShowMenu}">
                 <NavbarCollapse :is-show-menu="isShowMenu">
-                    <Link :href="route('dashboard')" class="dark:text-white">Home</Link>
-                    <Link :href="route('dogs')" class="dark:text-white">Dogs</Link>
-                    <Link :href="route('dogs_type')" class="dark:text-white">Dogs Type</Link>
-                    <Link :href="route('users')" class="dark:text-white">Users</Link>
-                    <Link :href="route('rol')" class="dark:text-white">Rol</Link>
+                    <CustomLink :href="route('dashboard')" :icon="mdiHome" title="Home" />
+                    <CustomLink :href="route('dogs')" :icon="mdiDog" title="Dogs" />
+                    <CustomLink :href="route('dogs_type')" :icon="mdiDogSide" title="Dogs Type" />
+                    <CustomLink :href="route('users')" :icon="mdiAccountGroup" title="Users" />
+                    <CustomLink :href="route('rol')" :icon="mdiAccountKey" title="Rol" />
                 </NavbarCollapse>
             </template>
+
+            <!-- Profile menu -->
+            <template #right-side>
+                <div class="mr-4 w-full">
+                    <Dropdown placement="left">
+                        <template #trigger>
+                            <Avatar bordered rounded img="https://placehold.co/600x600/1eb387/FFFFFF/png" />
+                        </template>
+                        <ListGroup>
+                            <ListGroupItem>
+                                <CustomLink :icon="mdiAccount" title="Profile" />
+                            </ListGroupItem>
+                            <ListGroupItem>
+                                <CustomLink title="Log Out" :icon="mdiLogout" />
+                            </ListGroupItem>
+                        </ListGroup>
+                    </Dropdown>
+                </div>
+                <SwitchTheme />
+            </template>
         </Navbar>
-        <slot />
+        <div class="p-4">
+            <slot />
+        </div>
     </main>
 </template>
