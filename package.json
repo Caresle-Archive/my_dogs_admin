@@ -18,6 +18,8 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@jamescoyle/vue-icon": "^0.1.2",
+        "@mdi/js": "^7.2.96",
         "flowbite": "^1.8.1",
         "flowbite-vue": "0.0.17-next.13"
     }

@@ -6,6 +6,7 @@ import {
     Button,
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
+import SwitchTheme from '@/Components/Theme/SwitchTheme.vue';
 
 const form = useForm({
     username: '',
@@ -42,6 +43,7 @@ const submit = () => {
                     </Button>
                 </div>
             </form>
+            <SwitchTheme />
         </TheCard>
     </div>
 </template>
