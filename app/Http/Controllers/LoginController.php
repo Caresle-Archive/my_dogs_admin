@@ -28,5 +28,10 @@ class LoginController extends Controller
 
         if (!isset($user))
             return back()->withErrors(['general' => 'Check the given information']);
+
+        if (!password_verify($json->password, $user->password))
+            return back()->withErrors(['general' => 'New information']);
+
+        return redirect()->to(route('dashboard'));
     }
 }

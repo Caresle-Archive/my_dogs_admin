@@ -7,6 +7,7 @@ import {
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
 import SwitchTheme from '@/Components/Theme/SwitchTheme.vue';
+import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 
 const form = useForm({
     username: '',
@@ -27,11 +28,11 @@ defineProps({
 <template>
     <div class="flex justify-center align-middle my-14 w-full">
         <TheCard class="w-full" variant="image">
+            <GeneralAlert type="danger" :title="errors.general" v-if="errors.general" />
             <form @submit.prevent="submit">
                 <div class="text-center">
                     <Heading tag="h1">Login</Heading>
                 </div>
-                {{ errors }}
                 <div class="w-[128px] mx-auto mt-2">
                     <img src="/logo.png" />
                 </div>
