@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Helpers\HttpResponses;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -16,16 +15,18 @@ class LoginController extends Controller
     }
 
     public function store(Request $request) {
-        $json = json_decode($request->getContent());
-
-        $validator = Validator::make((array)$json, [
+        $request->validate([
             'username' => 'required|string|min:3',
             'password' => 'required|string|min:3',
         ]);
 
-        if ($validator->fails())
-            return HttpResponses::Error('Login/Login', data: $validator->errors());
+        $json = json_decode($request->getContent());
 
-        dd($json);
+        $user = User::where([
+            ['username', '=', $json->username],
+        ])->first();
+
+        if (!isset($user))
+            return back()->withErrors(['general' => 'Check the given information']);
     }
 }

@@ -19,6 +19,9 @@ const submit = () => {
     }));
 };
 
+defineProps({
+    errors: Object,
+});
 </script>
 
 <template>
@@ -28,16 +31,32 @@ const submit = () => {
                 <div class="text-center">
                     <Heading tag="h1">Login</Heading>
                 </div>
+                {{ errors }}
                 <div class="w-[128px] mx-auto mt-2">
                     <img src="/logo.png" />
                 </div>
                 <div class="my-6">
-                    <Input placeholder="Username" label="Username" class="mb-4"
+                    <!-- Username -->
+                    <div class="mb-4">
+                        <Input placeholder="Username" label="Username"
                         v-model="form.username"
-                    />
-                    <Input class="mb-4" v-model="form.password"
+                        />
+                        <!-- USername errors -->
+                        <div class="text-red-500">
+                            {{ errors.username }}
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+                        <Input v-model="form.password"
                         placeholder="Password" label="Password" type="password"
-                    />
+                        />
+                        <!-- Password errors -->
+                        <div class="text-red-500">
+                            {{errors.password}}
+                        </div>
+                    </div>
                     <Button class="w-full scale-95 hover:scale-100 transition-all">
                         Login
                     </Button>

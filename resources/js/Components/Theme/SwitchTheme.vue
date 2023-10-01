@@ -20,7 +20,7 @@ const changeTheme = () => {
 </script>
 
 <template>
-    <Button color="default" outline @click="changeTheme">
+    <Button color="alternative" pill @click="changeTheme">
         <svg-icon type="mdi" :path="mdiThemeLightDark" />
     </Button>
 </template>
