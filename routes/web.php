@@ -40,3 +40,7 @@ use App\Http\Controllers\DashboardController;
 
 require __DIR__ . '/web/login.php';
 require __DIR__ . '/web/dashboard.php';
+require __DIR__ . '/web/dogs_type.php';
+require __DIR__ . '/web/dogs.php';
+require __DIR__ . '/web/rol.php';
+require __DIR__ . '/web/user.php';

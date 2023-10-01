@@ -4,6 +4,6 @@ import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 
 <template>
     <DashboardLayout>
-        <h1 class="text-white">Dashboard</h1>
+        <h1 class="dark:text-white">Dogs type</h1>
     </DashboardLayout>
 </template>
