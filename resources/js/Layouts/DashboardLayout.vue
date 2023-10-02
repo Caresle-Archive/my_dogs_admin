@@ -23,6 +23,7 @@ import {
 <template>
     <main>
         <Navbar solid>
+            <!-- Navigation Menu -->
             <template #default="{isShowMenu}">
                 <NavbarCollapse :is-show-menu="isShowMenu">
                     <CustomLink :href="route('dashboard')" :icon="mdiHome" title="Home" />
