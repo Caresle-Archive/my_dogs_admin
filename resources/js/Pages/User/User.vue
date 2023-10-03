@@ -33,7 +33,6 @@ provide('users', props.users);
 
 <template>
     <DashboardLayout>
-        <h1 class="text-white">USers: {{ users }}</h1>
         <h1 class="dark:text-white">Users</h1>
         <NewItem @open="() => openModal(showModalReactive)" title="New User" />
 
