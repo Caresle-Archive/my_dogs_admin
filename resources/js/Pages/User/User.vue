@@ -13,9 +13,9 @@ import {
     mdiContentSave,
 } from '@mdi/js';
 import NewItem from '../../Components/General/NewItem.vue';
+import UserTable from '../../Components/User/UserTable.vue';
 import { openModal, closeModal } from '../../Helpers/modal';
-import { ref, reactive } from 'vue';
-
+import { ref, reactive, provide } from 'vue';
 const showModalReactive = reactive({ show: false });
 const rolSelected = ref('');
 
@@ -23,12 +23,21 @@ const roles = [
     { value: 1, name: 'Test' },
     { value: 2, name: 'Test2'},
 ];
+
+const props = defineProps({
+    users: Array,
+});
+
+provide('users', props.users);
 </script>
 
 <template>
     <DashboardLayout>
+        <h1 class="text-white">USers: {{ users }}</h1>
         <h1 class="dark:text-white">Users</h1>
         <NewItem @open="() => openModal(showModalReactive)" title="New User" />
+
+        <!-- New User Modal -->
         <Modal v-if="showModalReactive.show"
             @close="() => closeModal(showModalReactive)"
             @click:outside="() => closeModal(showModalReactive)"
@@ -62,5 +71,8 @@ const roles = [
                 </div>
             </template>
         </Modal>
+
+        <!-- User Table -->
+        <UserTable />
     </DashboardLayout>
 </template>
