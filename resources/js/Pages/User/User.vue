@@ -5,6 +5,7 @@ import UserTable from '../../Components/User/UserTable.vue';
 import { openModal, closeModal } from '../../Helpers/modal';
 import { reactive, provide } from 'vue';
 import UserForm from '@/Components/User/UserForm.vue';
+import routes from '@/Helpers/routes';
 
 const showModalReactive = reactive({ show: false });
 
@@ -16,7 +17,7 @@ provide('users', props.users);
 </script>
 
 <template>
-    <DashboardLayout>
+    <DashboardLayout :selected="routes.users">
         <!-- Actions -->
         <NewItem @open="() => openModal(showModalReactive)" title="New User" />
 
