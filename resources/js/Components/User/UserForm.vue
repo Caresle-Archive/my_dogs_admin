@@ -11,7 +11,9 @@ import {
     Select,
     Button,
 } from 'flowbite-vue';
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+
 const props = defineProps({
     showModal: Boolean,
     edit: {
@@ -23,20 +25,26 @@ const props = defineProps({
 
 const emits = defineEmits(['closeModal', 'update', 'create']);
 
-const rolSelected = ref('');
+const { roles } = inject('users');
+const rolesMap = roles.map(e => ({value: e.id, name: e.name}));
 
-const roles = [
-    { value: 1, name: 'Test' },
-    { value: 2, name: 'Test2'},
-];
+const form = useForm({
+    username: '',
+    password: '',
+    rol: 0,
+});
 
 const handleClick = () => {
     if (props.edit) {
         emits('update');
         return;
     }
-
-    emits('create');
+    form.post(route('users.create', {
+        onFinish: () => {
+            console.log('finish form');
+        },
+    }));
+    // emits('create');
 };
 
 </script>
@@ -51,13 +59,17 @@ const handleClick = () => {
         </template>
         <template #body>
             <div class="mb-2">
-                <Input placeholder="Username" label="Username" />
+                <Input placeholder="Username" label="Username"
+                    v-model="form.username"
+                />
             </div>
             <div class="mb-2">
-                <Input placeholder="Password" label="Password" type="password" />
+                <Input placeholder="Password" label="Password"
+                    type="password" v-model="form.password"
+                />
             </div>
             <div class="mb-2">
-                <Select v-model="rolSelected" :options="roles" label="Rol" />
+                <Select v-model="form.rol" :options="rolesMap" label="Rol" />
             </div>
             <div class="flex justify-end">
                 <Button color="alternative" class="mr-2" @click="() => emits('closeModal')">

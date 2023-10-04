@@ -16,8 +16,7 @@ import {
     mdiTrashCan,
 } from '@mdi/js';
 
-const users = inject('users');
-
+const { users } = inject('users');
 </script>
 
 <template>

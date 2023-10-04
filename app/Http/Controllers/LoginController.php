@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 
-use Illuminate\Support\Facades\Validator;
-
 class LoginController extends Controller
 {
     public function index() {
