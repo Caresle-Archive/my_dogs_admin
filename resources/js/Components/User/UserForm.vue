@@ -12,7 +12,7 @@ import {
     Button,
 } from 'flowbite-vue';
 import { ref } from 'vue';
-defineProps({
+const props = defineProps({
     showModal: Boolean,
     edit: {
         type: Boolean,
@@ -29,6 +29,16 @@ const roles = [
     { value: 1, name: 'Test' },
     { value: 2, name: 'Test2'},
 ];
+
+const handleClick = () => {
+    if (props.edit) {
+        emits('update');
+        return;
+    }
+
+    emits('create');
+};
+
 </script>
 
 <template>
@@ -56,7 +66,7 @@ const roles = [
                     </template>
                     Cancel
                 </Button>
-                <Button>
+                <Button @click="handleClick">
                     <template #prefix>
                         <svgIcon type="mdi" :path="mdiContentSave" />
                     </template>
