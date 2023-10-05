@@ -11,8 +11,9 @@ import {
     Select,
     Button,
 } from 'flowbite-vue';
-import { ref, inject } from 'vue';
+import { inject } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import ErrorMessage from '../General/ErrorMessage.vue';
 
 const props = defineProps({
     showModal: Boolean,
@@ -25,7 +26,7 @@ const props = defineProps({
 
 const emits = defineEmits(['closeModal', 'update', 'create']);
 
-const { roles } = inject('users');
+const { roles, errors } = inject('users');
 const rolesMap = roles.map(e => ({value: e.id, name: e.name}));
 
 const form = useForm({
@@ -58,6 +59,7 @@ const handleClick = () => {
             <Heading tag="h4" class="text-center">{{ title }}</Heading>
         </template>
         <template #body>
+            {{ errors }}
             <div class="mb-2">
                 <Input placeholder="Username" label="Username"
                     v-model="form.username"
@@ -70,6 +72,7 @@ const handleClick = () => {
             </div>
             <div class="mb-2">
                 <Select v-model="form.rol" :options="rolesMap" label="Rol" />
+                <ErrorMessage :title="errors.rol" />
             </div>
             <div class="flex justify-end">
                 <Button color="alternative" class="mr-2" @click="() => emits('closeModal')">

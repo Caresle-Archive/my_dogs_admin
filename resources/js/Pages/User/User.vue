@@ -15,6 +15,7 @@ const props = defineProps({
     users: Array,
     roles: Array,
     message: String,
+    errors: Object,
 });
 
 const handleRefresh = () => {
@@ -33,6 +34,7 @@ const handleUpdate = () => {
 provide('users', {
     users: props.users,
     roles: props.roles,
+    errors: props.errors,
 });
 </script>
 
