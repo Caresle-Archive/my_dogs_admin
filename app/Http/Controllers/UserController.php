@@ -39,7 +39,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|string|min:5|unique:users,username',
+            'password' => 'required|string|min:5',
+            'rol' => 'required|integer|exists:rol,id',
+        ]);
+
+        $user = new User;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+        $user->rol = $request->rol;
+        $user->save();
+
+        return to_route('users.index');
     }
 
     /**
