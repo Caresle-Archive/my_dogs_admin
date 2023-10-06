@@ -8,6 +8,7 @@ import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 import routes from '@/Helpers/routes';
 import { openModal, closeModal } from '../../Helpers/modal';
 import { reactive, provide } from 'vue';
+import { router } from '@inertiajs/vue3';
 
 const showModalReactive = reactive({ show: false });
 
@@ -42,7 +43,7 @@ provide('users', {
     <DashboardLayout :selected="routes.users">
         <GeneralAlert :title="message" v-if="message" type="success" />
         <!-- Actions -->
-        <NewItem @open="() => openModal(showModalReactive)" title="New User" />
+        <NewItem @open="() => router.visit(route('users.create'))" title="New User" />
         <RefreshData @refresh="handleRefresh" />
 
         <!-- New User Modal -->

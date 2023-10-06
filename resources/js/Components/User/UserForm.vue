@@ -59,7 +59,6 @@ const handleClick = () => {
             <Heading tag="h4" class="text-center">{{ title }}</Heading>
         </template>
         <template #body>
-            {{ errors }}
             <div class="mb-2">
                 <Input placeholder="Username" label="Username"
                     v-model="form.username"

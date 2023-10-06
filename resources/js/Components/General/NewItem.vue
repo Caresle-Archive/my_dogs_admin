@@ -3,6 +3,7 @@ import {
     Button,
 } from 'flowbite-vue';
 import svgIcon from '@jamescoyle/vue-icon';
+
 import {
     mdiPlusCircle,
 } from '@mdi/js';

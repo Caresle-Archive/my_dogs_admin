@@ -2,37 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Rol;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function index(Request $request) {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $users = User::all();
         $rols = Rol::all();
 
-        return inertia('User/User', [
+        return Inertia::render('User/User', [
             'users' => $users,
             'roles' => $rols,
         ]);
     }
 
-    public function post(Request $request) {
-        $request->validate([
-            'username' => 'required|string|min:5|unique:users,username',
-            'password' => 'required|string|min:5',
-            'rol' => 'required|exists:rol,id',
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $roles = Rol::all();
+        return Inertia::render('User/UserForm', [
+            'roles' => $roles,
         ]);
+    }
 
-        $json = json_decode($request->getContent());
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-        $user = new User;
-        $user->username = $json->username;
-        $user->password = bcrypt($json->password);
-        $user->rol = $json->rol;
-        $user->save();
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
 
-        return redirect()->to(route('users'))->with('message', 'User created');
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
