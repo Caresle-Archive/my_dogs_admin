@@ -3,11 +3,11 @@ import {
     TheCard,
     Heading,
     Input,
-    Button,
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
 import SwitchTheme from '@/Components/Theme/SwitchTheme.vue';
 import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
+import AuthButton from '@/Components/General/AuthButton.vue';
 
 const form = useForm({
     username: '',
@@ -58,9 +58,7 @@ defineProps({
                             {{errors.password}}
                         </div>
                     </div>
-                    <Button class="w-full scale-95 hover:scale-100 transition-all">
-                        Login
-                    </Button>
+                    <AuthButton title="Login" />
                 </div>
             </form>
             <SwitchTheme />
