@@ -15,8 +15,14 @@ import {
     mdiPencil,
     mdiTrashCan,
 } from '@mdi/js';
+import { router } from '@inertiajs/vue3';
 
 const { users } = inject('users');
+
+const handleShow = (user) => {
+    router.visit(route('users.show', { id: user.id }));
+};
+
 </script>
 
 <template>
@@ -30,9 +36,13 @@ const { users } = inject('users');
             <TableBody>
                 <TableRow v-for="(user, ind) in users" :key="ind"
                 >
-                    <TableCell>{{ user.username }}</TableCell>
+                    <TableCell>
+                        <Button color="alternative" @click="() => handleShow(user)">
+                            {{ user.username }}
+                        </Button>
+                    </TableCell>
                     <TableCell>{{ user.rol }}</TableCell>
-                    <TableCell >
+                    <TableCell class="flex">
                         <Button color="alternative">
                             <svgIcon type="mdi" :path="mdiPencil" />
                         </Button>

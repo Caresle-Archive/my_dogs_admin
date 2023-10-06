@@ -59,7 +59,10 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::with('rol')->where('id', '=', $id)->first();
+        return Inertia::render('User/UserShow', [
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -83,6 +86,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        User::where('id', '=', $id)->destroy();
+
+        return to_route('users.index');
     }
 }
