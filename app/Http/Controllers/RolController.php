@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rol;
+use App\Models\RolHasPermission;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RolController extends Controller
 {
@@ -16,7 +18,26 @@ class RolController extends Controller
         return inertia('Rol/RolForm');
     }
 
-    public function store(Request $request) {}
+    public function store(Request $request) {
+        $request->validate([
+            'name' => 'required|string|min:3|unique:rol,name',
+            'permission.*' => 'required|integer|exists:permission,id',
+        ]);
+
+        $id = Rol::create([
+            'name' => $request->name,
+        ]);
+
+        $permissions = $request->permission;
+        foreach ($permissions as $permission) {
+            RolHasPermission::create([
+                'rol_id' => $id,
+                'permission_id' => $permission,
+            ]);
+        }
+
+        return to_route('rol.index');
+    }
 
     public function show(string $id) {
         return inertia('Rol/RolForm', [
@@ -33,7 +54,30 @@ class RolController extends Controller
         ]);
     }
 
-    public function update(Request $request, string $id) {}
+    public function update(Request $request, string $id) {
+        $request->validate([
+            'name' => ['required', 'string', 'min:3', Rule::unique('rol', 'name')->ignore($id)],
+            'permissions.*' => 'required|integer|exists:permission,id',
+        ]);
+
+        Rol::where('id', '=', $id)->update([
+            'name' => $request->name,
+        ]);
+
+        // Drop the permission of the rol and reinsert all of them
+        RolHasPermission::where('rol_id', '=', $id)->delete();
+
+        $permissions = $request->permissions;
+
+        foreach ($permissions as $permission) {
+            RolHasPermission::create([
+                'permission_id' => $permission,
+                'rol_id' => $id,
+            ]);
+        }
+
+        return to_route('rol.index');
+    }
 
     public function destroy(string $id) {
         if (Rol::all()->count() <= 1)
