@@ -20,7 +20,7 @@ import { router } from '@inertiajs/vue3';
 const { users } = inject('users');
 
 const handleShow = (user) => {
-    router.visit(route('users.show', { id: user.id }));
+    router.visit(route('users.show', user.id));
 };
 
 </script>

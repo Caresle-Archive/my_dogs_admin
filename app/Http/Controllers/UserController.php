@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -70,7 +71,12 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::where('id', '=', $id)->first();
+
+        return Inertia::render('User/UserForm', [
+            'isEdit' => true,
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -78,7 +84,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'username' => ['required', 'string', 'min:5', Rule::unique('users', 'username')->ignore($id)],
+            'password' => 'nullable|string|min:5',
+            'password_confirm' => 'same:password',
+            'rol' => 'required|integer|'
+        ]);
+
+        $input = [
+            'username' => $request->username,
+            'rol' => $request->rol,
+        ];
+
+        if (isset($request->password))
+            $input['password'] = bcrypt($request->password);
+
+        User::where('id', '=', $id)->update($input);
+        return to_route('users.index');
     }
 
     /**
@@ -86,8 +108,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        User::where('id', '=', $id)->destroy();
+        if (User::all()->count() <= 1)
+            return back()->withErrors(['general' => 'You need to have at least 1 user in the system']);
 
+        User::where('id', '=', $id)->destroy();
         return to_route('users.index');
     }
 }

@@ -11,12 +11,13 @@ import routes from '@/Helpers/routes';
 import { useForm } from '@inertiajs/vue3';
 import ErrorMessage from '@/Components/General/ErrorMessage.vue';
 
-const { roles, isEdit } = defineProps({
+const { roles, isEdit, user } = defineProps({
     roles: Array,
     isEdit: {
         type: Boolean,
         default: false,
     },
+    user: Object,
 });
 
 const form = useForm({
@@ -32,6 +33,12 @@ const handleForm = () => {
 
     form.post(route('users.store'));
 };
+
+// Set the data for the edit form
+if (isEdit) {
+    form.username = user.username;
+    form.rol = user.rol;
+}
 
 </script>
 
