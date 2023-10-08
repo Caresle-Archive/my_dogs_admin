@@ -111,7 +111,8 @@ class UserController extends Controller
         if (User::all()->count() <= 1)
             return back()->withErrors(['general' => 'You need to have at least 1 user in the system']);
 
-        User::where('id', '=', $id)->destroy();
-        return to_route('users.index');
+        User::where('id', '=', $id)->delete();
+
+        return redirect()->to(route('users.index'));
     }
 }
