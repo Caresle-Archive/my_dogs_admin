@@ -72,10 +72,12 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::where('id', '=', $id)->first();
+        $roles = Rol::all();
 
         return Inertia::render('User/UserForm', [
             'isEdit' => true,
             'user' => $user,
+            'roles' => $roles,
         ]);
     }
 

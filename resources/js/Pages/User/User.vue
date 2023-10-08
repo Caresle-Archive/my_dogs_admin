@@ -21,10 +21,7 @@ const handleRefresh = () => {
     console.log('Refresh');
 };
 
-console.log(props.users);
-
 provide('users', {
-    users: props.users,
     roles: props.roles,
     errors: props.errors,
 });
@@ -32,12 +29,14 @@ provide('users', {
 
 <template>
     <DashboardLayout :selected="routes.users">
-        <GeneralAlert :title="message" v-if="message" type="success" />
-        <!-- Actions -->
-        <NewItem @open="() => router.visit(route('users.create'))" title="New User" />
-        <RefreshData @refresh="handleRefresh" />
+        <div class="max-w-5xl mx-auto">
+            <GeneralAlert :title="message" v-if="message" type="success" />
+            <!-- Actions -->
+            <NewItem @open="() => router.visit(route('users.create'))" title="New User" />
+            <RefreshData @refresh="handleRefresh" />
 
-        <!-- User Table -->
-        <UserTable :users="users" />
+            <!-- User Table -->
+            <UserTable :users="users" />
+        </div>
     </DashboardLayout>
 </template>

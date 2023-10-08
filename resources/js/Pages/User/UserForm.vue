@@ -29,9 +29,13 @@ const form = useForm({
 const rolesSelectElement = roles.map(e => ({ value: e.id, name: e.name }));
 
 const handleForm = () => {
-    if (isEdit) return;
+    if (!isEdit) {
+        form.post(route('users.store'));
+        return;
+    }
 
-    form.post(route('users.store'));
+    form.put(route('users.update', user.id));
+
 };
 
 // Set the data for the edit form
@@ -68,7 +72,7 @@ if (isEdit) {
                         <ErrorMessage :title="form.errors.rol" />
                     </div>
                     <div class="mb-2">
-                        <CreateButton text="Create User" />
+                        <CreateButton :text="isEdit ? 'Update User' : 'Create User'" />
                     </div>
                 </form>
             </TheCard>

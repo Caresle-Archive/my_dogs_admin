@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref } from 'vue';
+import { ref } from 'vue';
 import {
     TheCard,
     Table,
@@ -17,8 +17,6 @@ import {
 } from '@mdi/js';
 import ModalNormal from '@/Components/Modal/ModalNormal.vue';
 import { router } from '@inertiajs/vue3';
-
-// const { users } = inject('users');
 
 const handleShow = (user) => {
     router.visit(route('users.show', user.id));
@@ -43,7 +41,10 @@ const handleOk = () => {
             },
         },
     );
+};
 
+const goToEdit = (user) => {
+    router.visit(route('users.edit', user.id));
 };
 
 const userToDelete = ref(0);
@@ -61,23 +62,23 @@ defineProps({
             text="Are you sure to delete the user?" :show="showModal"
             @ok="handleOk"
         />
-        <Table striped>
+        <Table striped class="max-w-5xl">
             <TableHead>
-                <TableHeadCell>Username</TableHeadCell>
-                <TableHeadCell>Rol</TableHeadCell>
-                <TableHeadCell>Actions</TableHeadCell>
+                <TableHeadCell class="text-center">Username</TableHeadCell>
+                <TableHeadCell class="text-center">Rol</TableHeadCell>
+                <TableHeadCell class="text-center">Actions</TableHeadCell>
             </TableHead>
             <TableBody>
                 <TableRow v-for="(user, ind) in users" :key="ind"
                 >
-                    <TableCell>
+                    <TableCell class="text-center">
                         <Button color="alternative" @click="() => handleShow(user)">
                             {{ user.username }}
                         </Button>
                     </TableCell>
-                    <TableCell>{{ user.rol }}</TableCell>
-                    <TableCell class="flex">
-                        <Button color="alternative">
+                    <TableCell class="text-center">{{ user.rol }}</TableCell>
+                    <TableCell class="flex justify-center">
+                        <Button color="alternative" @click="() => goToEdit(user)">
                             <svgIcon type="mdi" :path="mdiPencil" />
                         </Button>
                         <Button color="red" class="ml-4" @click="() => openModal(user)">
