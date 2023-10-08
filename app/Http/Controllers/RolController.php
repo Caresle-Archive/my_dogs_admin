@@ -30,7 +30,7 @@ class RolController extends Controller
 
         $id = Rol::create([
             'name' => $request->name,
-        ]);
+        ])->id;
 
         $permissions = $request->permission;
         foreach ($permissions as $permission) {
