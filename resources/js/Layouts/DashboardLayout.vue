@@ -37,7 +37,7 @@ defineProps({
                     <CustomLink :href="route('dashboard')" :icon="mdiHome" title="Home"
                         :selected="selected == routes.dashboard"
                     />
-                    <CustomLink :href="route('dogs')" :icon="mdiDog" title="Dogs"
+                    <CustomLink :href="route('dogs.index')" :icon="mdiDog" title="Dogs"
                         :selected="selected == routes.dogs"
                     />
                     <CustomLink :href="route('dogs_type')" :icon="mdiDogSide" title="Dogs Type"
@@ -46,7 +46,7 @@ defineProps({
                     <CustomLink :href="route('users.index')" :icon="mdiAccountGroup" title="Users"
                         :selected="selected == routes.users"
                     />
-                    <CustomLink :href="route('rol')" :icon="mdiAccountKey" title="Rol"
+                    <CustomLink :href="route('rol.index')" :icon="mdiAccountKey" title="Rol"
                         :selected="selected == routes.rol"
                     />
                 </NavbarCollapse>

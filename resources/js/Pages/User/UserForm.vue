@@ -4,9 +4,9 @@ import {
     TheCard,
     Input,
     Select,
-    Heading,
 } from 'flowbite-vue';
 import CreateButton from '@/Components/General/CreateButton.vue';
+import HeadingForm from '@/Components/General/HeadingForm.vue';
 import routes from '@/Helpers/routes';
 import { useForm } from '@inertiajs/vue3';
 import ErrorMessage from '@/Components/General/ErrorMessage.vue';
@@ -44,10 +44,12 @@ if (isEdit) {
 
 <template>
     <DashboardLayout :selected="routes.users">
-        <div class="w-1/2 mx-auto">
+        <div class="w-1/2 mx-auto max-w-lg">
             <TheCard class="!max-w-full" variant="image">
+                <HeadingForm :text="isEdit ? 'Update User' : 'Create User'"
+                    :route-name="route('users.index')"
+                />
                 <form @submit.prevent="handleForm">
-                    <Heading tag="h3" class="text-center">Create User</Heading>
                     <div class="mb-2">
                         <Input label="Username" placeholder="Username" v-model="form.username" />
                         <ErrorMessage :title="form.errors.username" />

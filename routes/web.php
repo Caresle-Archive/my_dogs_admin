@@ -38,6 +38,10 @@ use App\Http\Controllers\DashboardController;
 // });
 // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/', function () {
+    return redirect()->to(route('dashboard'));
+});
+
 require __DIR__ . '/web/login.php';
 require __DIR__ . '/web/dashboard.php';
 require __DIR__ . '/web/dogs_type.php';

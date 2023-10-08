@@ -1,6 +1,7 @@
 <script setup>
 import routes from '@/Helpers/routes';
 import DashboardLayout from '@/Layouts/DashboardLayout.vue';
+import HeadingForm from '@/Components/General/HeadingForm.vue';
 import {
     TheCard,
     Heading,
@@ -17,9 +18,9 @@ defineProps({
     <DashboardLayout :selected="routes.users">
         <div class="w-1/2 mx-auto">
             <TheCard class="!max-w-full" variant="image">
-                <Heading tag="h1" class="text-center">
-                    {{ user.username }}
-                </Heading>
+                <HeadingForm :route-name="route('users.index')"
+                    :text="user.username"
+                />
                 <div class="mb-2">
                     <Input label="Rol" v-model="user.rol.name" disabled />
                 </div>
