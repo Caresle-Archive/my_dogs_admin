@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Rol;
 use App\Models\RolHasPermission;
 use App\Models\User;
@@ -15,7 +16,10 @@ class RolController extends Controller
     }
 
     public function create() {
-        return inertia('Rol/RolForm');
+        $permissions = Permission::all();
+        return inertia('Rol/RolForm', [
+            'permissions' => $permissions,
+        ]);
     }
 
     public function store(Request $request) {
