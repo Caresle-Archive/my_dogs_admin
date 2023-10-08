@@ -18,7 +18,7 @@ import {
 import ModalNormal from '@/Components/Modal/ModalNormal.vue';
 import { router } from '@inertiajs/vue3';
 
-const { users } = inject('users');
+// const { users } = inject('users');
 
 const handleShow = (user) => {
     router.visit(route('users.show', user.id));
@@ -48,6 +48,10 @@ const handleOk = () => {
 
 const userToDelete = ref(0);
 const showModal = ref(false);
+
+defineProps({
+    users: Array,
+});
 
 </script>
 

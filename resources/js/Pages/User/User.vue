@@ -38,6 +38,6 @@ provide('users', {
         <RefreshData @refresh="handleRefresh" />
 
         <!-- User Table -->
-        <UserTable />
+        <UserTable :users="users" />
     </DashboardLayout>
 </template>
