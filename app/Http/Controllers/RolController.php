@@ -12,7 +12,10 @@ use Illuminate\Validation\Rule;
 class RolController extends Controller
 {
     public function index(Request $request) {
-        return inertia('Rol/Rol');
+        $roles = Rol::all();
+        return inertia('Rol/Rol', [
+            'roles' => $roles,
+        ]);
     }
 
     public function create() {
@@ -25,6 +28,7 @@ class RolController extends Controller
     public function store(Request $request) {
         $request->validate([
             'name' => 'required|string|min:3|unique:rol,name',
+            'permission' => 'required|array|min:1',
             'permission.*' => 'required|integer|exists:permission,id',
         ]);
 

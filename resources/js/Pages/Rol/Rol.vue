@@ -6,14 +6,20 @@ import {
     TheCard,
 } from 'flowbite-vue';
 import NewItem from '@/Components/General/NewItem.vue';
+import RolTable from '@/Components/Rol/RolTable.vue';
+
+defineProps({
+    roles: Array,
+});
+
 </script>
 
 <template>
     <DashboardLayout :selected="routes.rol">
         <div class="max-w-5xl mx-auto">
-            <TheCard class="!max-w-full" variant="image">
-                <NewItem title="New Role" @open="router.visit(route('rol.create'))" />
-            </TheCard>
+            <NewItem title="New Role" @open="router.visit(route('rol.create'))" />
+
+            <RolTable :roles="roles" />
         </div>
     </DashboardLayout>
 </template>
