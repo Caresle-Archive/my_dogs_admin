@@ -21,6 +21,8 @@ const handleRefresh = () => {
     console.log('Refresh');
 };
 
+console.log(props.users);
+
 provide('users', {
     users: props.users,
     roles: props.roles,
