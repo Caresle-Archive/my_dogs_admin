@@ -58,7 +58,7 @@ defineProps({
                             {{errors.password}}
                         </div>
                     </div>
-                    <AuthButton title="Login" />
+                    <AuthButton text="Login" />
                 </div>
             </form>
             <SwitchTheme />

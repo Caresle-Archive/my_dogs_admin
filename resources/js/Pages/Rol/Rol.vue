@@ -2,9 +2,6 @@
 import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import routes from '@/Helpers/routes';
 import { router } from '@inertiajs/vue3';
-import {
-    TheCard,
-} from 'flowbite-vue';
 import NewItem from '@/Components/General/NewItem.vue';
 import RolTable from '@/Components/Rol/RolTable.vue';
 

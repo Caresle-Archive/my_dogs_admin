@@ -9,6 +9,8 @@ class DogType extends Model
 {
     use HasFactory;
 
+    // protected $table = "dog_types";
+
     protected $fillable = [
         'name'
     ];

@@ -1,7 +1,7 @@
 <script setup>
 import {
     Button,
-} from 'flowbite';
+} from 'flowbite-vue';
 
 defineProps({
     text: String,
