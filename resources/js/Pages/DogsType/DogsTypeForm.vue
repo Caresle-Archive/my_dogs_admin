@@ -14,20 +14,26 @@ const form = useForm({
     name: '',
 });
 
-const { isEdit} = defineProps({
+const { isEdit, dogType } = defineProps({
     isEdit: {
         type: Boolean,
         default: false,
     },
+    dogType: Object,
 });
-
 
 const submit = () => {
     if (!isEdit) {
         form.post(route('dogs_type.store'));
         return;
     }
+
+    form.put(route('dogs_type.update', dogType.id));
 };
+
+if (isEdit) {
+    form.name = dogType.name;
+}
 </script>
 
 <template>
