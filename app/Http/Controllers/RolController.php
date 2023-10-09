@@ -55,10 +55,21 @@ class RolController extends Controller
 
     public function edit(string $id) {
         $rol = Rol::where('id', '=', $id)->first();
+        $permissions = Permission::all();
+
+        $role_permission = RolHasPermission::where('rol_id', '=', $id)->get();
+        foreach ($role_permission as $item) {
+            foreach ($permissions as $permission) {
+                if ($permission->id == $item->permission_id) {
+                    $permission->setAttribute('permission_selected', true);
+                }
+            }
+        }
 
         return inertia('Rol/RolForm', [
             'isEdit' => true,
             'rol' => $rol,
+            'permissions' => $permissions,
         ]);
     }
 

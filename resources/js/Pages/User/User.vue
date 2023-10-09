@@ -5,10 +5,8 @@ import UserTable from '../../Components/User/UserTable.vue';
 import RefreshData from '@/Components/General/RefreshData.vue';
 import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 import routes from '@/Helpers/routes';
-import { reactive, provide } from 'vue';
+import { provide } from 'vue';
 import { router } from '@inertiajs/vue3';
-
-const showModalReactive = reactive({ show: false });
 
 const props = defineProps({
     users: Array,

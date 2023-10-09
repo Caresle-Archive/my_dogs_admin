@@ -12,12 +12,13 @@ import {
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
 
-const { permissions, isEdit } = defineProps({
+const { permissions, isEdit, rol } = defineProps({
     isEdit: {
         type: Boolean,
         default: false,
     },
     permissions: Array,
+    rol: Object,
 });
 
 const permissionList = permissions.map(e => {
@@ -63,6 +64,19 @@ const submit = () => {
     form.post(route('rol.store'));
 };
 
+const permissionIsSelected = (permission) => {
+    if (
+        permission?.permission_selected === undefined ||
+        permission?.permission_selected === null ||
+        permission?.permission_selected === ''
+    ) return false;
+    return permission?.permissionIsSelected;
+};
+
+if (isEdit) {
+    form.name = rol.name;
+}
+
 </script>
 
 <template>
@@ -85,7 +99,8 @@ const submit = () => {
                             <Heading tag="h4">{{ sectionName }}</Heading>
                             <div v-for="(permission, ind) in permissionList" :key="ind">
                                 <div v-if="permission.name.includes(sectionName)" class="mb-2">
-                                    <Checkbox :label="permission.name" @click="() => handleAddPermission(permission.id)"/>
+                                    <Checkbox :label="permission.name" @click="() => handleAddPermission(permission.id)"
+                                    />
                                 </div>
                             </div>
                         </div>

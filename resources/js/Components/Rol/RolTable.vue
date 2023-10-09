@@ -23,7 +23,7 @@ const closeModal = () => {
 };
 
 const goToEdit = (id) => {
-    console.log(id);
+    router.visit(route('rol.edit', id));
 };
 
 const handleOk = () => {
