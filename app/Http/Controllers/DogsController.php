@@ -16,7 +16,7 @@ class DogsController extends Controller
     public function create() {
         $dog_types = DogType::all();
         return inertia('Dogs/DogsForm', [
-            'dog_types' => $dog_types,
+            'dogTypes' => $dog_types,
         ]);
     }
 
@@ -25,12 +25,12 @@ class DogsController extends Controller
             'name' => 'required|string|min:5|unique:dogs,name',
             'height' => 'required|numeric|min:1',
             'weight' => 'required|numeric|min:1',
-            'dog_type' => 'required|integer|exists:dogs_type,id',
+            'dog_type' => 'required|integer|exists:dog_types,id',
         ]);
 
         Dog::create([
             'name' => $request->name,
-            'dog_type' => $request->dog_type,
+            'id_dog_type' => $request->dog_type,
             'height' => $request->height,
             'weight' => $request->weight,
         ]);
