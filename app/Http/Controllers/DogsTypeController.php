@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dog;
 use App\Models\DogType;
 use Illuminate\Http\Request;
 
 class DogsTypeController extends Controller
 {
     public function index(Request $request) {
-        return inertia('DogsType/DogsType');
+        $dogs_types = DogType::all();
+
+        return inertia('DogsType/DogsType', [
+            'dogsType' => $dogs_types,
+        ]);
     }
 
     public function create() {
@@ -34,5 +39,14 @@ class DogsTypeController extends Controller
 
     public function update(Request $request, string $id) {}
 
-    public function destroy(string $id) {}
+    public function destroy(string $id) {
+        $valid = Dog::where('id_dog_type', '=', $id)->count();
+
+        if ($valid >= 1)
+            return back()->withErrors(['general' => "You can't delete a dog type that is being in use"]);
+
+        DogType::find($id)->delete();
+
+        return to_route('dogs_type.index');
+    }
 }
