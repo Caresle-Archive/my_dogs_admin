@@ -38,6 +38,9 @@ const submit = () => {
 
 if (isEdit) {
     form.name = dog.name;
+    form.height = dog.height;
+    form.weight = dog.weight;
+    form.dog_type = dog.dog_type;
 }
 
 const selectDogTypes = dogTypes.map(e => ({ value: e.id, name: e.name }));

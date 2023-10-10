@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Dog extends Model
 {
@@ -20,4 +21,8 @@ class Dog extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function dog_type() : HasOne {
+        return $this->hasOne(DogType::class, 'id', 'id_dog_type');
+    }
 }

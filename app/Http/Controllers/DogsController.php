@@ -10,7 +10,10 @@ use Illuminate\Validation\Rule;
 class DogsController extends Controller
 {
     public function index(Request $request) {
-        return inertia('Dogs/Dogs');
+        $dogs = Dog::with('dog_type')->get();
+        return inertia('Dogs/Dogs', [
+            'dogs' => $dogs,
+        ]);
     }
 
     public function create() {
@@ -65,8 +68,13 @@ class DogsController extends Controller
         ]);
 
         Dog::where('id', '=', $id)->update([
-
+            'name' => $request->name,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'dog_type' => $request->dog_type,
         ]);
+
+        return to_route('dogs.index');
     }
 
     public function destroy(string $id) {
