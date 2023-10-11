@@ -36,14 +36,15 @@ const submit = () => {
     form.put(route('dogs.update', dog.id));
 };
 
+const selectDogTypes = dogTypes.map(e => ({ value: e.id, name: e.name }));
+
 if (isEdit) {
     form.name = dog.name;
     form.height = dog.height;
     form.weight = dog.weight;
-    form.dog_type = dog.dog_type;
+    form.dog_type = dog.id_dog_type;
 }
 
-const selectDogTypes = dogTypes.map(e => ({ value: e.id, name: e.name }));
 </script>
 
 <template>

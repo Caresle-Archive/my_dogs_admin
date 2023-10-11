@@ -27,7 +27,7 @@ const goToEdit = (id) => {
 };
 
 const handleOk = () => {
-    router.delete(route('dogs.destroy', dogTypeToDelete.value), {
+    router.delete(route('dogs.destroy', dogToDelete.value), {
         onFinish: () => showModal.value = false,
     });
 };

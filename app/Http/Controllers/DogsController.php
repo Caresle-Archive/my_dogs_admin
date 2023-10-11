@@ -52,9 +52,11 @@ class DogsController extends Controller
 
     public function edit(string $id) {
         $dog = Dog::where('id', '=', $id)->first();
+        $dog_types = DogType::all();
 
         return inertia('Dogs/DogsForm', [
             'isEdit' => true,
+            'dogTypes' => $dog_types,
             'dog' => $dog,
         ]);
     }
@@ -64,14 +66,14 @@ class DogsController extends Controller
             'name' => ['required', 'string', 'min:5', Rule::unique('dogs', 'name')->ignore($id)],
             'height' => 'required|numeric|min:1',
             'weight' => 'required|numeric|min:1',
-            'dog_type' => 'required|integer|exists:dogs_type,id',
+            'dog_type' => 'required|integer|exists:dog_types,id',
         ]);
 
         Dog::where('id', '=', $id)->update([
             'name' => $request->name,
             'height' => $request->height,
             'weight' => $request->weight,
-            'dog_type' => $request->dog_type,
+            'id_dog_type' => $request->dog_type,
         ]);
 
         return to_route('dogs.index');
