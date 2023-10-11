@@ -1,6 +1,10 @@
 # My Dogs Admin
+![](./docs/dashboard.jpeg)
 
 Manage informations about your dogs, fast and simple in one site.
+
+![](./docs/dogs-dark.jpeg)
+![](./docs/dogs-light.jpeg)
 
 ## Table of contents
 
