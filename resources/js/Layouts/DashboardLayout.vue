@@ -8,7 +8,6 @@ import {
     ListGroupItem,
 } from 'flowbite-vue';
 import CustomLink from '@/Components/General/CustomLink.vue';
-import SideBarMenu from '@/Components/General/SideBarMenu.vue';
 import SwitchTheme from '@/Components/Theme/SwitchTheme.vue';
 import {
     mdiAccountGroup,
@@ -32,7 +31,6 @@ defineProps({
 <template>
 
     <div class="flex">
-        <SideBarMenu />
         <main class="w-full h-[100vh]">
             <Navbar solid>
                 <!-- Navigation Menu -->
