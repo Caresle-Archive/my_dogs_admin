@@ -72,7 +72,9 @@ defineProps({
                 <TableRow v-for="(user, ind) in users" :key="ind"
                 >
                     <TableCell class="text-center">
-                        <Button color="alternative" @click="() => handleShow(user)">
+                        <Button color="" @click="() => handleShow(user)"
+                            class="dark:hover:bg-gray-500 hover:bg-gray-200 rounded-md"
+                        >
                             {{ user.username }}
                         </Button>
                     </TableCell>
