@@ -34,7 +34,7 @@ defineProps({
                     <Heading tag="h1">Login</Heading>
                 </div>
                 <div class="w-[128px] mx-auto mt-2">
-                    <img src="/logo.png" />
+                    <img src="/logo.png" class="rounded-full" />
                 </div>
                 <div class="my-6">
                     <!-- Username -->
