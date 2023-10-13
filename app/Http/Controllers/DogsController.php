@@ -11,8 +11,11 @@ class DogsController extends Controller
 {
     public function index(Request $request) {
         $dogs = Dog::with('dog_type')->paginate(10);
+        $dogs_types = DogType::all();
+
         return inertia('Dogs/Dogs', [
             'data' => $dogs,
+            'dogsTypes' => $dogs_types,
         ]);
     }
 

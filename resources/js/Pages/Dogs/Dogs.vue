@@ -9,10 +9,12 @@ import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import {
     Button,
+    Select,
 } from 'flowbite-vue';
 
-const { data } = defineProps({
+const { data, dogsTypes } = defineProps({
     data: Object,
+    dogsTypes: Array,
 });
 
 const total = data.total;
@@ -31,6 +33,8 @@ const handleChangeView = () => {
     view.value = 0;
 }
 
+const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
+
 </script>
 
 <template>
@@ -45,6 +49,9 @@ const handleChangeView = () => {
                 </div>
 
                 <!-- Filter options -->
+                <Select placeholder="Select Dog Type for search"
+                    :options="dogsOptions"
+                />
                 <div class="w-1/3">
                     <SearchInput placeholder="Search" />
                 </div>
