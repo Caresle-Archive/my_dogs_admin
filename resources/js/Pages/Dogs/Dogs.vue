@@ -1,6 +1,7 @@
 <script setup>
 import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import NewItem from '@/Components/General/NewItem.vue';
+import SearchInput from '@/Components/Input/SearchInput.vue';
 import DogTable from '@/Components/Dog/DogTable.vue';
 import DogCardGrid from '@/Components/Dog/DogCardGrid.vue';
 import routes from '@/Helpers/routes';
@@ -21,7 +22,6 @@ const dogs = data.data;
 // 0 -> Card view / 1 -> Table view
 const view = ref(0);
 
-console.log(data);
 const handleChangeView = () => {
     if (view.value == 0) {
         view.value = 1;
@@ -36,12 +36,20 @@ const handleChangeView = () => {
 <template>
     <DashboardLayout :selected="routes.dogs">
         <div class="max-w-5xl mx-auto">
-            <div class="flex items-center">
-                <NewItem title="New Dog" @open="router.visit(route('dogs.create'))" />
-                <Button @click="handleChangeView" outline class="ml-5">
-                    ChangeView
-                </Button>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <NewItem title="New Dog" @open="router.visit(route('dogs.create'))" />
+                    <Button @click="handleChangeView" outline class="ml-5">
+                        ChangeView
+                    </Button>
+                </div>
+
+                <!-- Filter options -->
+                <div class="w-1/3">
+                    <SearchInput placeholder="Search" />
+                </div>
             </div>
+
             <Transition>
                 <DogCardGrid :dogs="dogs" v-if="view == 0"/>
                 <DogTable :dogs="dogs" v-else />
