@@ -48,3 +48,4 @@ require __DIR__ . '/web/dogs_type.php';
 require __DIR__ . '/web/dogs.php';
 require __DIR__ . '/web/rol.php';
 require __DIR__ . '/web/user.php';
+require __DIR__ . '/web/profile.php';

@@ -3,5 +3,6 @@ export default  {
     dogs: 'dogs',
     dogsType: 'dogsType',
     users: 'users',
-    rol: 'rol'
+    rol: 'rol',
+    profile: 'profile',
 };

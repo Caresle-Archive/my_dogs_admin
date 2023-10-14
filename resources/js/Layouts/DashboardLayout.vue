@@ -19,6 +19,11 @@ import {
     mdiLogout,
 } from '@mdi/js';
 import routes from '../Helpers/routes';
+import { router } from '@inertiajs/vue3';
+
+const goToProfile = () => {
+    router.visit(route('profile.index'));
+};
 
 defineProps({
     selected: {
@@ -62,7 +67,7 @@ defineProps({
                                 <Avatar bordered rounded img="https://placehold.co/600x600/1eb387/FFFFFF/png" />
                             </template>
                             <ListGroup>
-                                <ListGroupItem>
+                                <ListGroupItem @click="goToProfile">
                                     <CustomLink :icon="mdiAccount" title="Profile" />
                                 </ListGroupItem>
                                 <ListGroupItem>
