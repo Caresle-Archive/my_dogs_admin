@@ -5,7 +5,14 @@ import {
     TheCard,
     Heading,
     P,
+    Tabs,
+    Tab,
 } from 'flowbite-vue';
+import PreferencesView from '@/Components/Profile/PreferencesView.vue';
+import SettingsView from '@/Components/Profile/SettingsView.vue';
+import { ref } from 'vue';
+
+const activeTab = ref("0");
 </script>
 
 <template>
@@ -21,7 +28,14 @@ import {
                 </P>
             </TheCard>
             <TheCard class="!max-w-full" variant="image">
-                <Heading tag="h2">Profile</Heading>
+                <Tabs v-model="activeTab" variant="underline" class="p-5">
+                    <Tab name="0" title="Preferences">
+                        <PreferencesView />
+                    </Tab>
+                    <Tab name="1" title="Settings">
+                        <SettingsView />
+                    </Tab>
+                </Tabs>
             </TheCard>
         </div>
     </DashboardLayout>
