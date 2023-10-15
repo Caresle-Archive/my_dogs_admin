@@ -6,6 +6,8 @@ import {
     Button,
     P,
 } from 'flowbite-vue';
+import svgIcon from '@jamescoyle/vue-icon';
+import { mdiCloudUpload } from '@mdi/js';
 </script>
 
 <template>
@@ -32,12 +34,17 @@ import {
     </TheCard>
 
     <TheCard class="!max-w-full mt-4" variant="image">
-        <Heading tag="h4">Data</Heading>
-        <div>
+        <Heading tag="h4">Backup</Heading>
+        <div class="flex items-center">
             <P>
-                Clear Data,
-
+                Create a backup of the data of the system
             </P>
+            <Button class="ml-2">
+                <template #prefix>
+                    <svgIcon :path="mdiCloudUpload" type="mdi" />
+                </template>
+                Create Backup
+            </Button>
         </div>
     </TheCard>
 </template>
