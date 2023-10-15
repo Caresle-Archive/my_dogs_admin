@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\JwtHandler;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -29,6 +30,9 @@ class LoginController extends Controller
 
         if (!password_verify($json->password, $user->password))
             return back()->withErrors(['general' => 'New information']);
+
+        $token = JwtHandler::createToken($user);
+        session()->put('token', $token);
 
         return redirect()->to(route('dashboard'));
     }
