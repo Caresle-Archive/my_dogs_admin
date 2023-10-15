@@ -20,7 +20,7 @@ class JwtHandler
             'rol_id' => isset($user->rol) ? $user->rol : 0,
             'init' => time(),
             // 12 hrs from the moment it was created
-            'exp' => time() * 60 * 60 * 12,
+            'exp' => time() + (60 * 60 * 12),
         ];
 
         // Create the jwt

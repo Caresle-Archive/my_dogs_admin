@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsAuth;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,9 +44,11 @@ Route::get('/', function () {
 });
 
 require __DIR__ . '/web/login.php';
-require __DIR__ . '/web/dashboard.php';
-require __DIR__ . '/web/dogs_type.php';
-require __DIR__ . '/web/dogs.php';
-require __DIR__ . '/web/rol.php';
-require __DIR__ . '/web/user.php';
-require __DIR__ . '/web/profile.php';
+Route::middleware([IsAuth::class])->group(function () {
+    require __DIR__ . '/web/dashboard.php';
+    require __DIR__ . '/web/dogs_type.php';
+    require __DIR__ . '/web/dogs.php';
+    require __DIR__ . '/web/rol.php';
+    require __DIR__ . '/web/user.php';
+    require __DIR__ . '/web/profile.php';
+});
