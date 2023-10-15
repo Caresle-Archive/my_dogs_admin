@@ -10,6 +10,7 @@ import { ref } from 'vue';
 import {
     Button,
     Select,
+    Pagination,
 } from 'flowbite-vue';
 
 const { data, dogsTypes } = defineProps({
@@ -18,7 +19,9 @@ const { data, dogsTypes } = defineProps({
 });
 
 const total = data.total;
-const page = data.page;
+const page = ref(data.current_page);
+const previous = ref(data.current_page);
+const perPage = data.per_page;
 const dogs = data.data;
 
 // 0 -> Card view / 1 -> Table view
@@ -32,6 +35,14 @@ const handleChangeView = () => {
 
     view.value = 0;
 }
+
+const handlePage = () => {
+    if (page.value > previous.value) {
+        router.visit(data.next_page_url);
+        return;
+    }
+    router.visit(data.prev_page_url);
+};
 
 const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
 
@@ -56,7 +67,11 @@ const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
                     <SearchInput placeholder="Search" />
                 </div>
             </div>
-
+            <div>
+                <Pagination :total-items="total" :per-page="perPage" layout="table"
+                    v-model="page" @page-changed="handlePage"
+                />
+            </div>
             <Transition>
                 <DogCardGrid :dogs="dogs" v-if="view == 0"/>
                 <DogTable :dogs="dogs" v-else />
