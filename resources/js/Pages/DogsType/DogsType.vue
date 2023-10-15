@@ -4,10 +4,28 @@ import routes from '@/Helpers/routes';
 import NewItem from '@/Components/General/NewItem.vue';
 import DogsTypeTable from '@/Components/DogsType/DogsTypeTable.vue';
 import { router } from '@inertiajs/vue3';
+import {
+    Pagination,
+} from 'flowbite-vue';
+import { ref } from 'vue';
 
-defineProps({
-    dogsType: Array,
+const { data } = defineProps({
+    data: Object,
 });
+
+const page = ref(data.current_page);
+const previous = ref(data.current_page);
+const total = data.total;
+const dogsType = data.data;
+const perPage = data.per_page;
+
+const handlePage = () => {
+    if (page.value > previous.value) {
+        router.visit(data.next_page_url);
+        return;
+    }
+    router.visit(data.prev_page_url);
+};
 
 </script>
 
@@ -15,6 +33,11 @@ defineProps({
     <DashboardLayout :selected="routes.dogsType">
         <div class="max-w-5xl mx-auto">
             <NewItem title="New Dog Type" @open="router.visit(route('dogs_type.create'))" />
+            <div class="flex justify-end">
+                <Pagination v-model="page" :total-items="total" layout="table"
+                    :per-page="perPage" @page-changed="handlePage"
+                />
+            </div>
             <DogsTypeTable :dogs-type="dogsType" />
         </div>
     </DashboardLayout>

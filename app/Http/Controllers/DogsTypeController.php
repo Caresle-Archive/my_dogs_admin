@@ -10,10 +10,10 @@ use Illuminate\Validation\Rule;
 class DogsTypeController extends Controller
 {
     public function index(Request $request) {
-        $dogs_types = DogType::all();
+        $dogs_types = DogType::paginate(10);
 
         return inertia('DogsType/DogsType', [
-            'dogsType' => $dogs_types,
+            'data' => $dogs_types,
         ]);
     }
 
