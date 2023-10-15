@@ -4,6 +4,7 @@ import {
     TheCard,
     Input,
     Button,
+    P,
 } from 'flowbite-vue';
 </script>
 
@@ -27,6 +28,16 @@ import {
                     <Button class="mt-2 w-1/3">Update</Button>
                 </div>
             </form>
+        </div>
+    </TheCard>
+
+    <TheCard class="!max-w-full mt-4" variant="image">
+        <Heading tag="h4">Data</Heading>
+        <div>
+            <P>
+                Clear Data,
+
+            </P>
         </div>
     </TheCard>
 </template>

@@ -1,11 +1,11 @@
 <script setup>
 import {
     Heading,
-    Toggle,
     Button,
     P,
     TheCard,
 } from 'flowbite-vue';
+import ToggleTheme from '../Theme/ToggleTheme.vue';
 </script>
 
 <template>
@@ -17,9 +17,7 @@ import {
         <!-- Switch theme -->
         <div class="flex p-2 items-center">
             <Heading tag="h4">Dark Theme</Heading>
-            <div>
-                <Toggle />
-            </div>
+            <ToggleTheme />
         </div>
 
         <!-- Delete Account -->
