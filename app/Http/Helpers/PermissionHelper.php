@@ -45,8 +45,8 @@ final class PermissionHelper
         foreach ($rights_rol as $right_to_get) {
             array_push($rights, $right_to_get->permission_id);
         }
-        dd(in_array(PermissionHelper::ADMIN, $rights));
-        if (!in_array($right, $rights) || !in_array(PermissionHelper::ADMIN, $rights))
+
+        if (!in_array($right, $rights) && !in_array(PermissionHelper::ADMIN, $rights))
             return false;
 
         return true;
