@@ -2,8 +2,13 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Helpers\PermissionHelper;
 
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
+$get_user = PermissionHelper::GET_USER;
+
+Route::get('/users', [UserController::class, 'index'])
+    ->name('users.index')
+    ->middleware("has_right:$get_user");
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
