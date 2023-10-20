@@ -21,6 +21,7 @@ class HasRight
         $token = session()->get('token', '');
         $user = JwtHandler::decodeToken($token);
         $role = Rol::where('id', '=', $user->rol_id)->first();
+
         if (!PermissionHelper::hasRight($role, $permission))
             return back()->with('message', "You can't enter to that route");
 

@@ -41,7 +41,7 @@ class DogsController extends Controller
             'weight' => $request->weight,
         ]);
 
-        return to_route('dogs.index');
+        return to_route('dogs.index')->with('message', 'Dog Created successfully');
     }
 
     public function show(string $id) {

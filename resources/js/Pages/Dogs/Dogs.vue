@@ -4,6 +4,7 @@ import NewItem from '@/Components/General/NewItem.vue';
 import SearchInput from '@/Components/Input/SearchInput.vue';
 import DogTable from '@/Components/Dog/DogTable.vue';
 import DogCardGrid from '@/Components/Dog/DogCardGrid.vue';
+import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 import routes from '@/Helpers/routes';
 import { router } from '@inertiajs/vue3';
 import { ref } from 'vue';
@@ -17,6 +18,7 @@ const { data, dogsTypes } = defineProps({
     data: Object,
     dogsTypes: Array,
 });
+
 
 const total = data.total;
 const page = ref(data.current_page);
@@ -51,6 +53,9 @@ const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
 <template>
     <DashboardLayout :selected="routes.dogs">
         <div class="max-w-5xl mx-auto">
+            <GeneralAlert :title="$page.props.flash.message"
+                v-if="$page.props.flash?.message"
+            />
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <NewItem title="New Dog" @open="router.visit(route('dogs.create'))" />
