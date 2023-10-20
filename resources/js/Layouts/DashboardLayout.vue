@@ -71,7 +71,7 @@ defineProps({
                                     <CustomLink :icon="mdiAccount" title="Profile" />
                                 </ListGroupItem>
                                 <ListGroupItem>
-                                    <CustomLink title="Log Out" :icon="mdiLogout" />
+                                    <CustomLink :href="route('logout')" title="Log Out" :icon="mdiLogout" />
                                 </ListGroupItem>
                             </ListGroup>
                         </Dropdown>

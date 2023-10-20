@@ -36,4 +36,10 @@ class LoginController extends Controller
 
         return redirect()->to(route('dashboard'));
     }
+
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect()->to(route('login'));
+    }
 }
