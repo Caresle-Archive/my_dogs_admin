@@ -62,13 +62,13 @@ if (isEdit) {
                     <div class="flex">
                         <div class="mb-2 mr-1 w-full">
                             <Input label="Weight" placeholder="0.0" v-model="form.weight"
-                                type="number"
+                                type="number" step="0.01"
                             />
                             <ErrorMessage :title="form.errors.weight" />
                         </div>
                         <div class="mb-2 ml-1 w-full">
                             <Input label="Height" placeholder="0.0" v-model="form.height"
-                                type="number"
+                                type="number" step="0.01"
                             />
                             <ErrorMessage :title="form.errors.height" />
                         </div>

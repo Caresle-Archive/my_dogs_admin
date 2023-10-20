@@ -56,6 +56,9 @@ const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
             <GeneralAlert :title="$page.props.flash.message"
                 v-if="$page.props.flash?.message"
             />
+            <GeneralAlert :title="$page.props.flash.message_info"
+                v-if="$page.props.flash?.message_info" type="info"
+            />
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <NewItem title="New Dog" @open="router.visit(route('dogs.create'))" />

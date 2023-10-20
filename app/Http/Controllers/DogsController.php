@@ -79,11 +79,11 @@ class DogsController extends Controller
             'id_dog_type' => $request->dog_type,
         ]);
 
-        return to_route('dogs.index');
+        return to_route('dogs.index')->with('message_info', 'Dog updated');
     }
 
     public function destroy(string $id) {
         Dog::where('id', '=', $id)->delete();
-        return to_route('dogs.index');
+        return to_route('dogs.index')->with('message', 'Dog deleted');
     }
 }
