@@ -14,25 +14,25 @@ const form = useForm({
     name: '',
 });
 
-const { isEdit, dogType } = defineProps({
+const { isEdit, dogBreed } = defineProps({
     isEdit: {
         type: Boolean,
         default: false,
     },
-    dogType: Object,
+    dogBreed: Object,
 });
 
 const submit = () => {
     if (!isEdit) {
-        form.post(route('dogs_type.store'));
+        form.post(route('dogs_breed.store'));
         return;
     }
 
-    form.put(route('dogs_type.update', dogType.id));
+    form.put(route('dogs_breed.update', dogBreed.id));
 };
 
 if (isEdit) {
-    form.name = dogType.name;
+    form.name = dogBreed.name;
 }
 </script>
 
@@ -41,7 +41,7 @@ if (isEdit) {
         <div class="max-w-md mx-auto">
             <TheCard class="!max-w-full" variant="image">
                 <HeadingForm :text="isEdit ? 'Update Dog type' : 'Create Dog Type'"
-                    :route-name="route('dogs_type.index')"
+                    :route-name="route('dogs_breed.index')"
                 />
                 <form @submit.prevent="submit">
                     <div class="mb-2">

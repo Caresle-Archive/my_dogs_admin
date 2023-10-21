@@ -41,7 +41,7 @@ const handlePage = () => {
                 v-if="$page.props.flash?.message_info" type="info"
             />
 
-            <NewItem title="New Dog Type" @open="router.visit(route('dogs_type.create'))" />
+            <NewItem title="New Dog Type" @open="router.visit(route('dogs_breed.create'))" />
             <div class="flex justify-end">
                 <Pagination v-model="page" :total-items="total" layout="table"
                     :per-page="perPage" @page-changed="handlePage"

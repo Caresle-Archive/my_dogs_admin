@@ -14,9 +14,9 @@ import {
     Pagination,
 } from 'flowbite-vue';
 
-const { data, dogsTypes } = defineProps({
+const { data, dogsBreeds } = defineProps({
     data: Object,
-    dogsTypes: Array,
+    dogsBreeds: Array,
 });
 
 
@@ -46,7 +46,7 @@ const handlePage = () => {
     router.visit(data.prev_page_url);
 };
 
-const dogsOptions = dogsTypes.map(e => ({ value: e.id, name: e.name }));
+const dogsOptions = dogsBreeds.map(e => ({ value: e.id, name: e.name }));
 
 </script>
 

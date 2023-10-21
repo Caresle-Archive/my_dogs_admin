@@ -14,7 +14,7 @@ import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 
 const openModal = (id) => {
-    dogTypeToDelete.value = id;
+    dogBreedToDelete.value = id;
     showModal.value = true;
 };
 
@@ -23,16 +23,16 @@ const closeModal = () => {
 };
 
 const goToEdit = (id) => {
-    router.visit(route('dogs_type.edit', id));
+    router.visit(route('dogs_breed.edit', id));
 };
 
 const handleOk = () => {
-    router.delete(route('dogs_type.destroy', dogTypeToDelete.value), {
+    router.delete(route('dogs_breed.destroy', dogBreedToDelete.value), {
         onFinish: () => showModal.value = false,
     });
 };
 
-const dogTypeToDelete = ref(0);
+const dogBreedToDelete = ref(0);
 const showModal = ref(false);
 
 defineProps({

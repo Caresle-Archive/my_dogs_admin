@@ -23,6 +23,6 @@ class Dog extends Model
     ];
 
     public function dog_type() : HasOne {
-        return $this->hasOne(DogType::class, 'id', 'id_dog_type');
+        return $this->hasOne(DogBreed::class, 'id', 'id_dog_type');
     }
 }

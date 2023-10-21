@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\Dog;
+use App\Models\DogBreed;
 use Illuminate\Database\Seeder;
 
-class DogSeeder extends Seeder
+class DogBreedSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Dog::factory()->count(20)->create();
+        DogBreed::factory()->count(20)->create();
     }
 }

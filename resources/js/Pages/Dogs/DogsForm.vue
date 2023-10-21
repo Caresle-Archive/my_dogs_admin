@@ -18,13 +18,13 @@ const form = useForm({
     weight: 0.0,
 });
 
-const { isEdit, dog, dogTypes } = defineProps({
+const { isEdit, dog, dogBreeds } = defineProps({
     isEdit: {
         type: Boolean,
         default: false,
     },
     dog: Object,
-    dogTypes: Array,
+    dogBreeds: Array,
 });
 
 const submit = () => {
@@ -36,7 +36,7 @@ const submit = () => {
     form.put(route('dogs.update', dog.id));
 };
 
-const selectDogTypes = dogTypes.map(e => ({ value: e.id, name: e.name }));
+const selectDogBreed = dogBreeds.map(e => ({ value: e.id, name: e.name }));
 
 if (isEdit) {
     form.name = dog.name;
@@ -75,7 +75,7 @@ if (isEdit) {
                     </div>
                     <div class="mb-2">
                         <Select label="Type" placeholder="Type" v-model="form.dog_type"
-                            :options="selectDogTypes"
+                            :options="selectDogBreed"
                         />
                         <ErrorMessage :title="form.errors.dog_type" />
                     </div>

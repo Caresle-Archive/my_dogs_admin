@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dog;
-use App\Models\DogType;
+use App\Models\DogBreed;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
-class DogsTypeController extends Controller
+class DogsBreedController extends Controller
 {
     public function index(Request $request) {
-        $dogs_types = DogType::paginate(10);
+        $dogs_breeds = DogBreed::paginate(10);
 
         return inertia('DogsType/DogsType', [
-            'data' => $dogs_types,
+            'data' => $dogs_breeds,
         ]);
     }
 
@@ -26,17 +26,17 @@ class DogsTypeController extends Controller
             'name' => 'required|string|min:5|max:255|unique:dog_types,name',
         ]);
 
-        DogType::create(['name' => $request->name]);
+        DogBreed::create(['name' => $request->name]);
 
-        return to_route('dogs_type.index')->with('message', 'Dog type created successfully');
+        return to_route('dogs_breed.index')->with('message', 'Dog type created successfully');
     }
 
     public function edit(string $id) {
-        $dog_type = DogType::find($id);
+        $dog_breed = DogBreed::find($id);
 
         return inertia('DogsType/DogsTypeForm', [
             'isEdit' => true,
-            'dogType' => $dog_type,
+            'dogBreed' => $dog_breed,
         ]);
     }
 
@@ -51,9 +51,9 @@ class DogsTypeController extends Controller
             ],
         ]);
 
-        DogType::find($id)->update(['name' => $request->name]);
+        DogBreed::find($id)->update(['name' => $request->name]);
 
-        return to_route('dogs_type.index')->with('message_info', 'Dog type updated successfully');
+        return to_route('dogs_breed.index')->with('message_info', 'Dog type updated successfully');
     }
 
     public function destroy(string $id) {
@@ -62,8 +62,8 @@ class DogsTypeController extends Controller
         if ($valid >= 1)
             return back()->withErrors(['general' => "You can't delete a dog type that is being in use"]);
 
-        DogType::find($id)->delete();
+        DogBreed::find($id)->delete();
 
-        return to_route('dogs_type.index')->with('message', 'Dog type deleted successfully');
+        return to_route('dogs_breed.index')->with('message', 'Dog type deleted successfully');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dog;
-use App\Models\DogType;
+use App\Models\DogBreed;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -11,18 +11,18 @@ class DogsController extends Controller
 {
     public function index(Request $request) {
         $dogs = Dog::with('dog_type')->paginate(10);
-        $dogs_types = DogType::all();
+        $dogs_breeds = DogBreed::all();
 
         return inertia('Dogs/Dogs', [
             'data' => $dogs,
-            'dogsTypes' => $dogs_types,
+            'dogsBreeds' => $dogs_breeds,
         ]);
     }
 
     public function create() {
-        $dog_types = DogType::all();
+        $dog_types = DogBreed::all();
         return inertia('Dogs/DogsForm', [
-            'dogTypes' => $dog_types,
+            'dogBreeds' => $dog_types,
         ]);
     }
 
@@ -55,11 +55,11 @@ class DogsController extends Controller
 
     public function edit(string $id) {
         $dog = Dog::where('id', '=', $id)->first();
-        $dog_types = DogType::all();
+        $dog_types = DogBreed::all();
 
         return inertia('Dogs/DogsForm', [
             'isEdit' => true,
-            'dogTypes' => $dog_types,
+            'dogBreeds' => $dog_types,
             'dog' => $dog,
         ]);
     }

@@ -56,7 +56,7 @@ const goTo = name => {
                     illum magnam deserunt rerum quae, quos quibusdam vero incidunt porro,
                 </P>
                 <Button class="mt-5 w-full"
-                    @click="() => goTo(route('dogs_type.index'))"
+                    @click="() => goTo(route('dogs_breed.index'))"
                 >
                     Go to Dogs Type
                 </Button>

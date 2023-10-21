@@ -2,16 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\DogType;
+use App\Models\DogBreed;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
-class DogTypeFactory extends Factory
+class DogBreedFactory extends Factory
 {
 
-    protected $model = DogType::class;
+    protected $model = DogBreed::class;
 
     /**
      * Define the model's default state.

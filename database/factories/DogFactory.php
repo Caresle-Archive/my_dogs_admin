@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Dog;
-use App\Models\DogType;
+use App\Models\DogBreed;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +25,7 @@ class DogFactory extends Factory
             'height' => fake()->randomFloat(2, 1, 1000),
             'weight' => fake()->randomFloat(2, 1, 1000),
             'id_dog_type' => function () {
-                return DogType::factory()->create()->id;
+                return DogBreed::factory()->create()->id;
             }
         ];
     }
