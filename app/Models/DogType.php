@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class DogType extends Model
+class DogBreed extends Model
 {
     use HasFactory;
 
-    // protected $table = "dog_types";
+    protected $table = "dog_breeds";
 
     protected $fillable = [
         'name'

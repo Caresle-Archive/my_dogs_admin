@@ -13,6 +13,12 @@ import {
     mdiDog,
     mdiDogSide,
 } from '@mdi/js';
+import { router } from '@inertiajs/vue3';
+
+const goTo = name => {
+    router.visit(name);
+};
+
 </script>
 
 <template>
@@ -31,7 +37,11 @@ import {
                     Ipsa, velit. Cum quo consectetur voluptatem ducimus nesciunt
                     illum magnam deserunt rerum quae, quos quibusdam vero incidunt porro,
                 </P>
-                <Button class="mt-5 w-full">Go to Dogs</Button>
+                <Button class="mt-5 w-full"
+                    @click="() => goTo(route('dogs.index'))"
+                >
+                    Go to Dogs
+                </Button>
             </TheCard>
             <TheCard class="m-2 !max-w-full scale-95 transition-all hover:scale-100">
                 <div class="flex items-center justify-between">
@@ -45,7 +55,11 @@ import {
                     Ipsa, velit. Cum quo consectetur voluptatem ducimus nesciunt
                     illum magnam deserunt rerum quae, quos quibusdam vero incidunt porro,
                 </P>
-                <Button class="mt-5 w-full">Go to Dogs Type</Button>
+                <Button class="mt-5 w-full"
+                    @click="() => goTo(route('dogs_type.index'))"
+                >
+                    Go to Dogs Type
+                </Button>
             </TheCard>
             <TheCard class="m-2 !max-w-full scale-95 transition-all hover:scale-100">
                 <div class="flex items-center justify-between">
@@ -59,7 +73,11 @@ import {
                     Ipsa, velit. Cum quo consectetur voluptatem ducimus nesciunt
                     illum magnam deserunt rerum quae, quos quibusdam vero incidunt porro,
                 </P>
-                <Button class="mt-5 w-full">Go to Users</Button>
+                <Button class="mt-5 w-full"
+                    @click="() => goTo(route('users.index'))"
+                >
+                    Go to Users
+                </Button>
             </TheCard>
             <TheCard class="m-2 !max-w-full scale-95 transition-all hover:scale-100">
                 <div class="flex items-center justify-between">
@@ -73,7 +91,11 @@ import {
                     Ipsa, velit. Cum quo consectetur voluptatem ducimus nesciunt
                     illum magnam deserunt rerum quae, quos quibusdam vero incidunt porro,
                 </P>
-                <Button class="mt-5 w-full">Go to Roles</Button>
+                <Button class="mt-5 w-full"
+                    @click="() => goTo(route('rol.index'))"
+                >
+                    Go to Roles
+                </Button>
             </TheCard>
         </div>
     </DashboardLayout>
