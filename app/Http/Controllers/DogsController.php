@@ -36,7 +36,7 @@ class DogsController extends Controller
 
         Dog::create([
             'name' => $request->name,
-            'id_dog_type' => $request->dog_type,
+            'id_dog_breed' => $request->dog_type,
             'height' => $request->height,
             'weight' => $request->weight,
         ]);
@@ -76,7 +76,7 @@ class DogsController extends Controller
             'name' => $request->name,
             'height' => $request->height,
             'weight' => $request->weight,
-            'id_dog_type' => $request->dog_type,
+            'id_dog_breed' => $request->dog_type,
         ]);
 
         return to_route('dogs.index')->with('message_info', 'Dog updated');

@@ -42,7 +42,7 @@ if (isEdit) {
     form.name = dog.name;
     form.height = dog.height;
     form.weight = dog.weight;
-    form.dog_type = dog.id_dog_type;
+    form.dog_breed = dog.id_dog_breed;
 }
 
 </script>
@@ -74,7 +74,7 @@ if (isEdit) {
                         </div>
                     </div>
                     <div class="mb-2">
-                        <Select label="Type" placeholder="Type" v-model="form.dog_type"
+                        <Select label="Type" placeholder="Type" v-model="form.dog_breed"
                             :options="selectDogBreed"
                         />
                         <ErrorMessage :title="form.errors.dog_type" />

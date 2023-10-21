@@ -57,7 +57,7 @@ class DogsBreedController extends Controller
     }
 
     public function destroy(string $id) {
-        $valid = Dog::where('id_dog_type', '=', $id)->count();
+        $valid = Dog::where('id_dog_breed', '=', $id)->count();
 
         if ($valid >= 1)
             return back()->withErrors(['general' => "You can't delete a dog type that is being in use"]);

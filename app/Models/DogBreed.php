@@ -22,6 +22,6 @@ class DogBreed extends Model
     ];
 
     public function dog(): BelongsToMany {
-        return $this->belongsToMany(Dog::class, 'id_dog_type', 'id');
+        return $this->belongsToMany(Dog::class, 'id_dog_breed', 'id');
     }
 }

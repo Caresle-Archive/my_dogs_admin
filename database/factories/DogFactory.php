@@ -24,7 +24,7 @@ class DogFactory extends Factory
             'name' => fake()->firstName(),
             'height' => fake()->randomFloat(2, 1, 1000),
             'weight' => fake()->randomFloat(2, 1, 1000),
-            'id_dog_type' => function () {
+            'id_dog_breed' => function () {
                 return DogBreed::factory()->create()->id;
             }
         ];

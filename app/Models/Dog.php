@@ -12,7 +12,7 @@ class Dog extends Model
 
     protected $fillable = [
         'name',
-        'id_dog_type',
+        'id_dog_breed',
         'height',
         'weight',
     ];
@@ -23,6 +23,6 @@ class Dog extends Model
     ];
 
     public function dog_type() : HasOne {
-        return $this->hasOne(DogBreed::class, 'id', 'id_dog_type');
+        return $this->hasOne(DogBreed::class, 'id', 'id_dog_breed');
     }
 }
