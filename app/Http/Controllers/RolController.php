@@ -44,7 +44,7 @@ class RolController extends Controller
             ]);
         }
 
-        return to_route('rol.index');
+        return to_route('rol.index')->with('message', 'Role created successfully');
     }
 
     public function show(string $id) {
@@ -95,7 +95,7 @@ class RolController extends Controller
             ]);
         }
 
-        return to_route('rol.index');
+        return to_route('rol.index')->with('message_info', 'Role updated successfully');
     }
 
     public function destroy(string $id) {
@@ -110,6 +110,6 @@ class RolController extends Controller
 
         Rol::where('id', '=', $id)->delete();
 
-        return to_route('rol.index');
+        return to_route('rol.index')->with('message', 'Role deleted successfully');
     }
 }

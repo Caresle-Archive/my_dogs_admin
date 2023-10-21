@@ -23,7 +23,13 @@ provide('users', {
 <template>
     <DashboardLayout :selected="routes.users">
         <div class="max-w-5xl mx-auto">
-            <GeneralAlert :title="message" v-if="message" type="success" />
+            <!-- Alerts -->
+            <GeneralAlert :title="$page.props.flash.message"
+                v-if="$page.props.flash?.message"
+            />
+            <GeneralAlert :title="$page.props.flash.message_info"
+                v-if="$page.props.flash?.message_info" type="info"
+            />
             <!-- Actions -->
             <NewItem @open="() => router.visit(route('users.create'))" title="New User" />
 

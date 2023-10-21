@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->rol = $request->rol;
         $user->save();
 
-        return to_route('users.index');
+        return to_route('users.index')->with('message', 'User created successfully');
     }
 
     /**
@@ -102,7 +102,7 @@ class UserController extends Controller
             $input['password'] = bcrypt($request->password);
 
         User::where('id', '=', $id)->update($input);
-        return to_route('users.index');
+        return to_route('users.index')->with('message_info', 'User updated successfully');
     }
 
     /**
@@ -115,6 +115,6 @@ class UserController extends Controller
 
         User::where('id', '=', $id)->delete();
 
-        return redirect()->to(route('users.index'));
+        return to_route('users.index')->with('message', 'User deleted successfully');
     }
 }

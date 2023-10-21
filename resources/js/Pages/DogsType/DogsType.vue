@@ -3,6 +3,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import routes from '@/Helpers/routes';
 import NewItem from '@/Components/General/NewItem.vue';
 import DogsTypeTable from '@/Components/DogsType/DogsTypeTable.vue';
+import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 import { router } from '@inertiajs/vue3';
 import {
     Pagination,
@@ -32,6 +33,14 @@ const handlePage = () => {
 <template>
     <DashboardLayout :selected="routes.dogsType">
         <div class="max-w-5xl mx-auto">
+            <!-- Alerts -->
+            <GeneralAlert :title="$page.props.flash.message"
+                v-if="$page.props.flash?.message"
+            />
+            <GeneralAlert :title="$page.props.flash.message_info"
+                v-if="$page.props.flash?.message_info" type="info"
+            />
+
             <NewItem title="New Dog Type" @open="router.visit(route('dogs_type.create'))" />
             <div class="flex justify-end">
                 <Pagination v-model="page" :total-items="total" layout="table"

@@ -28,7 +28,7 @@ class DogsTypeController extends Controller
 
         DogType::create(['name' => $request->name]);
 
-        return to_route('dogs_type.index');
+        return to_route('dogs_type.index')->with('message', 'Dog type created successfully');
     }
 
     public function edit(string $id) {
@@ -53,7 +53,7 @@ class DogsTypeController extends Controller
 
         DogType::find($id)->update(['name' => $request->name]);
 
-        return to_route('dogs_type.index');
+        return to_route('dogs_type.index')->with('message_info', 'Dog type updated successfully');
     }
 
     public function destroy(string $id) {
@@ -64,6 +64,6 @@ class DogsTypeController extends Controller
 
         DogType::find($id)->delete();
 
-        return to_route('dogs_type.index');
+        return to_route('dogs_type.index')->with('message', 'Dog type deleted successfully');
     }
 }
