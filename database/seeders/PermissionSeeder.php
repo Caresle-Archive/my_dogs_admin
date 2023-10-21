@@ -27,10 +27,10 @@ class PermissionSeeder extends Seeder
             'post_dog',
             'put_dog',
             'delete_dog',
-            'get_dog_type',
-            'post_dog_type',
-            'put_dog_type',
-            'delete_dog_type',
+            'get_dog_breed',
+            'post_dog_breed',
+            'put_dog_breed',
+            'delete_dog_breed',
         ];
 
         foreach ($permissions as $ind => $permission) {

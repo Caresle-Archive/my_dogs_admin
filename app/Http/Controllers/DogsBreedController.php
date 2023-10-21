@@ -12,13 +12,13 @@ class DogsBreedController extends Controller
     public function index(Request $request) {
         $dogs_breeds = DogBreed::paginate(10);
 
-        return inertia('DogsType/DogsType', [
+        return inertia('DogsBreed/DogsBreed', [
             'data' => $dogs_breeds,
         ]);
     }
 
     public function create() {
-        return inertia('DogsType/DogsTypeForm');
+        return inertia('DogsType/DogsBreedForm');
     }
 
     public function store(Request $request) {
@@ -34,7 +34,7 @@ class DogsBreedController extends Controller
     public function edit(string $id) {
         $dog_breed = DogBreed::find($id);
 
-        return inertia('DogsType/DogsTypeForm', [
+        return inertia('DogsBreed/DogsBreedForm', [
             'isEdit' => true,
             'dogBreed' => $dog_breed,
         ]);
@@ -47,7 +47,7 @@ class DogsBreedController extends Controller
                 'string',
                 'min:5',
                 'max:255',
-                Rule::unique('dog_types', 'name')->ignore($id),
+                Rule::unique('dog_breeds', 'name')->ignore($id),
             ],
         ]);
 

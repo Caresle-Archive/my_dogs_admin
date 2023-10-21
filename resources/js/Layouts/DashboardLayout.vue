@@ -47,8 +47,8 @@ defineProps({
                         <CustomLink :href="route('dogs.index')" :icon="mdiDog" title="Dogs"
                             :selected="selected == routes.dogs"
                         />
-                        <CustomLink :href="route('dogs_breed.index')" :icon="mdiDogSide" title="Dogs Type"
-                            :selected="selected == routes.dogsType"
+                        <CustomLink :href="route('dogs_breed.index')" :icon="mdiDogSide" title="Dogs Breed"
+                            :selected="selected == routes.dogsBreed"
                         />
                         <CustomLink :href="route('users.index')" :icon="mdiAccountGroup" title="Users"
                             :selected="selected == routes.users"

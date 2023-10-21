@@ -59,7 +59,7 @@ defineProps({
                     <TableCell>{{ dog.name }}</TableCell>
                     <TableCell>{{ dog.weight }}</TableCell>
                     <TableCell>{{ dog.height }}</TableCell>
-                    <TableCell>{{ dog.dog_type.name }}</TableCell>
+                    <TableCell>{{ dog.dog_breed.name }}</TableCell>
                     <ActionsTable @delete="() => openModal(dog.id)"
                         @edit="() => goToEdit(dog.id)"
                     />

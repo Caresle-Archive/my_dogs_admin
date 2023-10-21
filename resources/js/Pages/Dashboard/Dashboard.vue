@@ -48,7 +48,7 @@ const goTo = name => {
                     <svgIcon type="mdi" :path="mdiDogSide" class="dark:text-white w-full"
                         size="64"
                     />
-                    <Heading tag="h2" class="text-center">Dogs Type</Heading>
+                    <Heading tag="h2" class="text-center">Dogs Breed</Heading>
                 </div>
                 <P class="text-center">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

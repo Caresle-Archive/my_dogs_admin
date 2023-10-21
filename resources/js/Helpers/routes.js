@@ -1,7 +1,7 @@
 export default  {
     dashboard: 'dashboard',
     dogs: 'dogs',
-    dogsType: 'dogsType',
+    dogsBreed: 'dogsBreed',
     users: 'users',
     rol: 'rol',
     profile: 'profile',

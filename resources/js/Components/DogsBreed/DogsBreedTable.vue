@@ -36,7 +36,7 @@ const dogBreedToDelete = ref(0);
 const showModal = ref(false);
 
 defineProps({
-    dogsType: Array,
+    dogsBreed: Array,
 });
 </script>
 
@@ -52,7 +52,7 @@ defineProps({
                 <TableHeadCell>Actions</TableHeadCell>
             </TableHead>
             <TableBody>
-                <TableRow v-for="(dog, ind) in dogsType" :key="ind" class="text-center">
+                <TableRow v-for="(dog, ind) in dogsBreed" :key="ind" class="text-center">
                     <TableCell>{{ dog.name }}</TableCell>
                     <ActionsTable @delete="() => openModal(dog.id)"
                         @edit="() => goToEdit(dog.id)"
