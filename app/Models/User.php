@@ -14,10 +14,13 @@ class User extends Model
         'name',
         'password',
         'rol',
+        'token',
+        'status',
     ];
 
     protected $hidden = [
         'password',
+        'token',
         'created_at',
         'updated_at',
     ];

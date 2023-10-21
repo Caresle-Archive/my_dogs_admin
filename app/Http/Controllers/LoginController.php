@@ -29,7 +29,13 @@ class LoginController extends Controller
             return back()->withErrors(['general' => 'Check the given information']);
 
         if (!password_verify($json->password, $user->password))
-            return back()->withErrors(['general' => 'New information']);
+            return back()->withErrors(['general' => 'Check the given information']);
+
+        // Check if the user status is active
+        if ($user->status != 'S') {
+            $user->status = 'S';
+            $user->save();
+        }
 
         $token = JwtHandler::createToken($user);
         session()->put('token', $token);
