@@ -61,16 +61,11 @@ const handleAddPermission = (id) => {
 
 const submit = () => {
     form.permission = Array.from(form.permissions);
-    form.post(route('role.store'));
-};
-
-const permissionIsSelected = (permission) => {
-    if (
-        permission?.permission_selected === undefined ||
-        permission?.permission_selected === null ||
-        permission?.permission_selected === ''
-    ) return false;
-    return permission?.permissionIsSelected;
+    if (!isEdit) {
+        form.post(route('role.store'));
+        return;
+    }
+    form.put(route('role.update', role.id));
 };
 
 if (isEdit) {
@@ -78,8 +73,6 @@ if (isEdit) {
     role.permissions?.forEach(e => {
         form.permissions.add(e.permission_id);
     });
-    console.log(role);
-    console.log(form);
 }
 
 </script>

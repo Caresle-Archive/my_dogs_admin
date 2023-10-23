@@ -86,7 +86,7 @@ class RoleController extends Controller
         // Drop the permission of the rol and reinsert all of them
         RoleHasPermission::where('role_id', '=', $id)->delete();
 
-        $permissions = $request->permissions;
+        $permissions = $request->permission;
 
         foreach ($permissions as $permission) {
             RoleHasPermission::create([
