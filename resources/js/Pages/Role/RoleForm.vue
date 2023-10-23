@@ -8,9 +8,9 @@ import {
     TheCard,
     Input,
     Heading,
-    Checkbox,
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
+import CustomCheckBox from '@/Components/Input/CustomCheckBox.vue';
 
 const { permissions, isEdit, role } = defineProps({
     isEdit: {
@@ -75,6 +75,11 @@ const permissionIsSelected = (permission) => {
 
 if (isEdit) {
     form.name = role.name;
+    role.permissions?.forEach(e => {
+        form.permissions.add(e.permission_id);
+    });
+    console.log(role);
+    console.log(form);
 }
 
 </script>
@@ -99,7 +104,8 @@ if (isEdit) {
                             <Heading tag="h4">{{ sectionName }}</Heading>
                             <div v-for="(permission, ind) in permissionList" :key="ind">
                                 <div v-if="permission.name.includes(sectionName)" class="mb-2">
-                                    <Checkbox :label="permission.name" @click="() => handleAddPermission(permission.id)"
+                                    <CustomCheckBox :label="permission.name" @click="() => handleAddPermission(permission.id)"
+                                        :checked="form.permissions.has(permission.id)"
                                     />
                                 </div>
                             </div>

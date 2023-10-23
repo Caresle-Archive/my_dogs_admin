@@ -27,7 +27,7 @@ class RoleController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required|string|min:3|unique:rol,name',
+            'name' => 'required|string|min:3|unique:role,name',
             'permission' => 'required|array|min:1',
             'permission.*' => 'required|integer|exists:permission,id',
         ]);
@@ -54,7 +54,7 @@ class RoleController extends Controller
     }
 
     public function edit(string $id) {
-        $role = Role::where('id', '=', $id)->first();
+        $role = Role::with('permissions')->where('id', '=', $id)->first();
         $permissions = Permission::all();
 
         $role_permission = RoleHasPermission::where('role_id', '=', $id)->get();

@@ -12,7 +12,7 @@ class RoleHasPermission extends Model
     protected $table = 'role_has_permission';
 
     protected $fillable = [
-        'rol_id',
+        'role_id',
         'permission_id',
     ];
 
