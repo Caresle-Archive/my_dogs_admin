@@ -22,7 +22,7 @@ class Dog extends Model
         'updated_at',
     ];
 
-    public function dog_type() : HasOne {
+    public function dog_breed() : HasOne {
         return $this->hasOne(DogBreed::class, 'id', 'id_dog_breed');
     }
 }

@@ -13,7 +13,7 @@ class User extends Model
     protected $fillable = [
         'name',
         'password',
-        'rol',
+        'role',
         'token',
         'status',
     ];
@@ -29,7 +29,7 @@ class User extends Model
     /**
      * Return the details of the rol assigned to the user
      */
-    public function rol(): HasOne {
-        return $this->hasOne(Rol::class, 'id', 'rol');
+    public function role(): HasOne {
+        return $this->hasOne(Role::class, 'id', 'role');
     }
 }

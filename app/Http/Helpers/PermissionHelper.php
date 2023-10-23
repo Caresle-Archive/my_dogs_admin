@@ -3,8 +3,8 @@
 namespace App\Http\Helpers;
 
 use App\Models\Permission;
-use App\Models\Rol;
-use App\Models\RolHasPermission;
+use App\Models\Role;
+use App\Models\RoleHasPermission;
 
 final class PermissionHelper
 {
@@ -34,15 +34,15 @@ final class PermissionHelper
     const PUT_DOG_TYPE = 16;
     const DELETE_DOG_TYPE = 17;
 
-    public static function hasRight(Rol $rol, int $right = -1) : bool
+    public static function hasRight(Role $role, int $right = -1) : bool
     {
-        if (!isset($rol) || $right == -1) return false;
+        if (!isset($role) || $right == -1) return false;
 
-        $rights_rol = RolHasPermission::where('rol_id', '=', $rol->id)->get();
+        $rights_role = RoleHasPermission::where('role_id', '=', $role->id)->get();
 
         // Get the permission linked with the rol
         $rights = [];
-        foreach ($rights_rol as $right_to_get) {
+        foreach ($rights_role as $right_to_get) {
             array_push($rights, $right_to_get->permission_id);
         }
 

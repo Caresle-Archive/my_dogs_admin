@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Helpers\JwtHandler;
-use App\Models\Rol;
+use App\Models\Role;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +20,7 @@ class HasRight
     {
         $token = session()->get('token', '');
         $user = JwtHandler::decodeToken($token);
-        $role = Rol::where('id', '=', $user->rol_id)->first();
+        $role = Role::where('id', '=', $user->role_id)->first();
 
         if (!PermissionHelper::hasRight($role, $permission))
             return back()->with('message', "You can't enter to that route");

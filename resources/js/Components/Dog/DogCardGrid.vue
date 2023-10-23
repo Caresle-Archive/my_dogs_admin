@@ -87,7 +87,7 @@ const showModal = ref(false);
                 </div>
                 <div>
                     <P>
-                        <strong>Type:</strong> {{ dog.dog_type.name }}
+                        <strong>Type:</strong> {{ dog.dog_breed.name }}
                     </P>
                     <P>
                         <strong>Height:</strong> {{ dog.height }}

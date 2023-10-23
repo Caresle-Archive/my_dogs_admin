@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\RolHasPermission;
+use App\Models\RoleHasPermission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +13,9 @@ class RoleHasPermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        RolHasPermission::create([
+        RoleHasPermission::create([
             'id' => 1,
-            'rol_id' => 1,
+            'role_id' => 1,
             'permission_id' => 1,
         ]);
     }

@@ -17,7 +17,7 @@ class JwtHandler
         // Data to be stored in the jwt
         $payload = [
             'user_id' => $user->id,
-            'rol_id' => isset($user->rol) ? $user->rol : 0,
+            'role_id' => isset($user->role) ? $user->role : 0,
             'init' => time(),
             // 12 hrs from the moment it was created
             'exp' => time() + (60 * 60 * 12),

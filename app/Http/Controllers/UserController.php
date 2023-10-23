@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rol;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -16,11 +16,11 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $rols = Rol::all();
+        $roles = Role::all();
 
         return Inertia::render('User/User', [
             'users' => $users,
-            'roles' => $rols,
+            'roles' => $roles,
         ]);
     }
 
@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Rol::all();
+        $roles = Role::all();
         return Inertia::render('User/UserForm', [
             'roles' => $roles,
         ]);
@@ -43,7 +43,7 @@ class UserController extends Controller
         $request->validate([
             'username' => 'required|string|min:5|unique:users,username',
             'password' => 'required|string|min:5',
-            'rol' => 'required|integer|exists:rol,id',
+            'role' => 'required|integer|exists:role,id',
         ]);
 
         $user = new User;
@@ -72,7 +72,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::where('id', '=', $id)->first();
-        $roles = Rol::all();
+        $roles = Role::all();
 
         return Inertia::render('User/UserForm', [
             'isEdit' => true,
@@ -90,12 +90,12 @@ class UserController extends Controller
             'username' => ['required', 'string', 'min:5', Rule::unique('users', 'username')->ignore($id)],
             'password' => 'nullable|string|min:5',
             'password_confirm' => 'same:password',
-            'rol' => 'required|integer|'
+            'role' => 'required|integer|'
         ]);
 
         $input = [
             'username' => $request->username,
-            'rol' => $request->rol,
+            'role' => $request->role,
         ];
 
         if (isset($request->password))
