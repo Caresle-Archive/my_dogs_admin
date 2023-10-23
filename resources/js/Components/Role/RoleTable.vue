@@ -23,11 +23,11 @@ const closeModal = () => {
 };
 
 const goToEdit = (id) => {
-    router.visit(route('rol.edit', id));
+    router.visit(route('role.edit', id));
 };
 
 const handleOk = () => {
-    router.delete(route('rol.destroy', roleToDelete.value), {
+    router.delete(route('role.destroy', roleToDelete.value), {
         onFinish: () => showModal.value = false,
     });
 };

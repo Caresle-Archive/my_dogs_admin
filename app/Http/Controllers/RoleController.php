@@ -13,14 +13,14 @@ class RoleController extends Controller
 {
     public function index(Request $request) {
         $roles = Role::all();
-        return inertia('Rol/Rol', [
+        return inertia('Role/Role', [
             'roles' => $roles,
         ]);
     }
 
     public function create() {
         $permissions = Permission::all();
-        return inertia('Rol/RolForm', [
+        return inertia('Role/RoleForm', [
             'permissions' => $permissions,
         ]);
     }
@@ -44,11 +44,11 @@ class RoleController extends Controller
             ]);
         }
 
-        return to_route('rol.index')->with('message', 'Role created successfully');
+        return to_route('role.index')->with('message', 'Role created successfully');
     }
 
     public function show(string $id) {
-        return inertia('Rol/RolForm', [
+        return inertia('Role/RoleForm', [
             'show' => true,
         ]);
     }
@@ -57,7 +57,7 @@ class RoleController extends Controller
         $role = Role::where('id', '=', $id)->first();
         $permissions = Permission::all();
 
-        $role_permission = RoleHasPermission::where('rol_id', '=', $id)->get();
+        $role_permission = RoleHasPermission::where('role_id', '=', $id)->get();
         foreach ($role_permission as $item) {
             foreach ($permissions as $permission) {
                 if ($permission->id == $item->permission_id) {
@@ -66,7 +66,7 @@ class RoleController extends Controller
             }
         }
 
-        return inertia('Rol/RolForm', [
+        return inertia('Role/RoleForm', [
             'isEdit' => true,
             'role' => $role,
             'permissions' => $permissions,
@@ -75,7 +75,7 @@ class RoleController extends Controller
 
     public function update(Request $request, string $id) {
         $request->validate([
-            'name' => ['required', 'string', 'min:3', Rule::unique('rol', 'name')->ignore($id)],
+            'name' => ['required', 'string', 'min:3', Rule::unique('role', 'name')->ignore($id)],
             'permissions.*' => 'required|integer|exists:permission,id',
         ]);
 
@@ -84,7 +84,7 @@ class RoleController extends Controller
         ]);
 
         // Drop the permission of the rol and reinsert all of them
-        RoleHasPermission::where('rol_id', '=', $id)->delete();
+        RoleHasPermission::where('role_id', '=', $id)->delete();
 
         $permissions = $request->permissions;
 
@@ -95,7 +95,7 @@ class RoleController extends Controller
             ]);
         }
 
-        return to_route('rol.index')->with('message_info', 'Role updated successfully');
+        return to_route('role.index')->with('message_info', 'Role updated successfully');
     }
 
     public function destroy(string $id) {
@@ -110,6 +110,6 @@ class RoleController extends Controller
 
         Role::where('id', '=', $id)->delete();
 
-        return to_route('rol.index')->with('message', 'Role deleted successfully');
+        return to_route('role.index')->with('message', 'Role deleted successfully');
     }
 }

@@ -4,7 +4,6 @@ import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import HeadingForm from '@/Components/General/HeadingForm.vue';
 import {
     TheCard,
-    Heading,
     Input,
 } from 'flowbite-vue';
 
@@ -22,7 +21,7 @@ defineProps({
                     :text="user.username"
                 />
                 <div class="mb-2">
-                    <Input label="Rol" v-model="user.rol.name" disabled />
+                    <Input label="Rol" v-model="user.role.name" disabled />
                 </div>
             </TheCard>
         </div>

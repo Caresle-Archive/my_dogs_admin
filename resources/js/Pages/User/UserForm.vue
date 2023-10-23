@@ -23,7 +23,7 @@ const { roles, isEdit, user } = defineProps({
 const form = useForm({
     username: '',
     password: '',
-    rol: 0,
+    role: 0,
 })
 
 const rolesSelectElement = roles.map(e => ({ value: e.id, name: e.name }));
@@ -41,7 +41,7 @@ const handleForm = () => {
 // Set the data for the edit form
 if (isEdit) {
     form.username = user.username;
-    form.rol = user.rol;
+    form.role = user.role;
 }
 
 </script>
@@ -67,9 +67,9 @@ if (isEdit) {
                     <div class="mb-2">
                         <Select :options="rolesSelectElement" title="Role" label="Role"
                             placeholder="Please select the user Role"
-                            v-model:model-value="form.rol"
+                            v-model:model-value="form.role"
                         />
-                        <ErrorMessage :title="form.errors.rol" />
+                        <ErrorMessage :title="form.errors.role" />
                     </div>
                     <div class="mb-2">
                         <CreateButton :text="isEdit ? 'Update User' : 'Create User'" />

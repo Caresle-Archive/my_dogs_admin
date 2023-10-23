@@ -65,7 +65,7 @@ defineProps({
         <Table striped class="max-w-5xl">
             <TableHead>
                 <TableHeadCell class="text-center">Username</TableHeadCell>
-                <TableHeadCell class="text-center">Rol</TableHeadCell>
+                <TableHeadCell class="text-center">Role</TableHeadCell>
                 <TableHeadCell class="text-center">Actions</TableHeadCell>
             </TableHead>
             <TableBody>
@@ -78,7 +78,7 @@ defineProps({
                             {{ user.username }}
                         </Button>
                     </TableCell>
-                    <TableCell class="text-center">{{ user.rol }}</TableCell>
+                    <TableCell class="text-center">{{ user.role }}</TableCell>
                     <TableCell class="flex justify-center">
                         <Button color="alternative" @click="() => goToEdit(user)">
                             <svgIcon type="mdi" :path="mdiPencil" />

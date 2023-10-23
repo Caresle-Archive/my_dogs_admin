@@ -18,7 +18,7 @@ class DogsBreedController extends Controller
     }
 
     public function create() {
-        return inertia('DogsType/DogsBreedForm');
+        return inertia('DogsBreed/DogsBreedForm');
     }
 
     public function store(Request $request) {

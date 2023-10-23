@@ -53,8 +53,8 @@ defineProps({
                         <CustomLink :href="route('users.index')" :icon="mdiAccountGroup" title="Users"
                             :selected="selected == routes.users"
                         />
-                        <CustomLink :href="route('rol.index')" :icon="mdiAccountKey" title="Rol"
-                            :selected="selected == routes.rol"
+                        <CustomLink :href="route('role.index')" :icon="mdiAccountKey" title="Roles"
+                            :selected="selected == routes.role"
                         />
                     </NavbarCollapse>
                 </template>

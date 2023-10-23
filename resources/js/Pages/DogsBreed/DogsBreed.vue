@@ -17,7 +17,7 @@ const { data } = defineProps({
 const page = ref(data.current_page);
 const previous = ref(data.current_page);
 const total = data.total;
-const dogsType = data.data;
+const dogsBreed = data.data;
 const perPage = data.per_page;
 
 const handlePage = () => {
@@ -47,7 +47,7 @@ const handlePage = () => {
                     :per-page="perPage" @page-changed="handlePage"
                 />
             </div>
-            <DogsBreedTable :dogs-breed="dogsType" />
+            <DogsBreedTable :dogs-breed="dogsBreed" />
         </div>
     </DashboardLayout>
 </template>

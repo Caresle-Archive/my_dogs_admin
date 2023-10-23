@@ -37,7 +37,7 @@ if (isEdit) {
 </script>
 
 <template>
-    <DashboardLayout :selected="routes.dogsType">
+    <DashboardLayout :selected="routes.dogsBreed">
         <div class="max-w-md mx-auto">
             <TheCard class="!max-w-full" variant="image">
                 <HeadingForm :text="isEdit ? 'Update Dog type' : 'Create Dog Type'"

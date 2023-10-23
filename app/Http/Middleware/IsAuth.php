@@ -24,7 +24,6 @@ class IsAuth
 
         // Get the decoded token and validate the expiration
         $jwt = JwtHandler::decodeToken($token);
-
         $exp = $jwt->exp;
 
         if ($exp <= time())

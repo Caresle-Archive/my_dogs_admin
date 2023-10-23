@@ -3,7 +3,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout.vue';
 import routes from '@/Helpers/routes';
 import { router } from '@inertiajs/vue3';
 import NewItem from '@/Components/General/NewItem.vue';
-import RolTable from '@/Components/Rol/RolTable.vue';
+import RoleTable from '@/Components/Role/RoleTable.vue';
 import GeneralAlert from '@/Components/Alerts/GeneralAlert.vue';
 
 defineProps({
@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-    <DashboardLayout :selected="routes.rol">
+    <DashboardLayout :selected="routes.role">
         <div class="max-w-5xl mx-auto">
             <!-- Alerts -->
             <GeneralAlert :title="$page.props.flash.message"
@@ -23,9 +23,9 @@ defineProps({
                 v-if="$page.props.flash?.message_info" type="info"
             />
 
-            <NewItem title="New Role" @open="router.visit(route('rol.create'))" />
+            <NewItem title="New Role" @open="router.visit(route('role.create'))" />
 
-            <RolTable :roles="roles" />
+            <RoleTable :roles="roles" />
         </div>
     </DashboardLayout>
 </template>

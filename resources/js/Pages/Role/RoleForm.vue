@@ -12,13 +12,13 @@ import {
 } from 'flowbite-vue';
 import { useForm } from '@inertiajs/vue3';
 
-const { permissions, isEdit, rol } = defineProps({
+const { permissions, isEdit, role } = defineProps({
     isEdit: {
         type: Boolean,
         default: false,
     },
     permissions: Array,
-    rol: Object,
+    role: Object,
 });
 
 const permissionList = permissions.map(e => {
@@ -61,7 +61,7 @@ const handleAddPermission = (id) => {
 
 const submit = () => {
     form.permission = Array.from(form.permissions);
-    form.post(route('rol.store'));
+    form.post(route('role.store'));
 };
 
 const permissionIsSelected = (permission) => {
@@ -74,17 +74,17 @@ const permissionIsSelected = (permission) => {
 };
 
 if (isEdit) {
-    form.name = rol.name;
+    form.name = role.name;
 }
 
 </script>
 
 <template>
-    <DashboardLayout :selected="routes.rol">
+    <DashboardLayout :selected="routes.role">
         <div class="max-w-5xl mx-auto">
             <TheCard class="!max-w-full" variant="image">
                 <HeadingForm :text="isEdit ? 'Update Role' : 'Create Role'"
-                    :route-name="route('rol.index')"
+                    :route-name="route('role.index')"
                 />
                 <form @submit.prevent="submit">
                     <div class="mb-2">

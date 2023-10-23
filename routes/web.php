@@ -48,7 +48,7 @@ Route::middleware([IsAuth::class])->group(function () {
     require __DIR__ . '/web/dashboard.php';
     require __DIR__ . '/web/dogs_breed.php';
     require __DIR__ . '/web/dogs.php';
-    require __DIR__ . '/web/rol.php';
+    require __DIR__ . '/web/role.php';
     require __DIR__ . '/web/user.php';
     require __DIR__ . '/web/profile.php';
 });

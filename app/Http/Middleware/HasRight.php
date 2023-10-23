@@ -20,6 +20,9 @@ class HasRight
     {
         $token = session()->get('token', '');
         $user = JwtHandler::decodeToken($token);
+
+        if (!isset($user->role_id)) return back();
+
         $role = Role::where('id', '=', $user->role_id)->first();
 
         if (!PermissionHelper::hasRight($role, $permission))
