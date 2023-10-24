@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::with(['role'])->get();
         $roles = Role::all();
 
         return Inertia::render('User/User', [
@@ -60,7 +60,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::with('rol')->where('id', '=', $id)->first();
+        $user = User::with('role')->where('id', '=', $id)->first();
         return Inertia::render('User/UserShow', [
             'user' => $user,
         ]);
