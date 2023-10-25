@@ -9,7 +9,6 @@ Manage informations about your dogs, fast and simple in one site.
 ## Table of contents
 
 - [About the project](#about-the-project)
-- [Features](#features)
 - [Install](#install)
     - [Requirements](#requirements)
     - [Steps](#steps)
@@ -18,10 +17,6 @@ Manage informations about your dogs, fast and simple in one site.
 ## About the project
 
 A simple panel to manage information about your dogs, made using Laravel, vue and inertia.
-
-## Features
-
-TODO: TO ADD features sections
 
 ## Install
 
@@ -58,7 +53,3 @@ npm run dev
 ```
 
 7. Go to your localhost, you should see the app running
-
-## Contribution
-
-Todo : Add contribution section
