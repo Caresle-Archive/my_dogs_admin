@@ -14,10 +14,8 @@ import svgIcon from '@jamescoyle/vue-icon';
 import {
     mdiPencil,
     mdiTrashCan,
-    mdiEye,
 } from '@mdi/js';
 import ModalNormal from '@/Components/Modal/ModalNormal.vue';
-import ModalUser from './ModalUser.vue';
 import { router } from '@inertiajs/vue3';
 
 const handleShow = (user) => {
@@ -49,20 +47,8 @@ const goToEdit = (user) => {
     router.visit(route('users.edit', user.id));
 };
 
-const openModalUser = (user) => {
-    rolesToShow.value = user.roles;
-    showModalRoles.value = true;
-};
-
-const closeModalUser = () => {
-    rolesToShow.value = {};
-    showModalRoles.value = false;
-}
-
 const userToDelete = ref(0);
-const rolesToShow = ref({});
 const showModal = ref(false);
-const showModalRoles = ref(false);
 
 defineProps({
     users: Array,
@@ -75,9 +61,6 @@ defineProps({
         <ModalNormal @cancel="closeModal" title="Delete User"
             text="Are you sure to delete the user?" :show="showModal"
             @ok="handleOk"
-        />
-        <ModalUser title="User Roles" :show="showModalRoles" @cancel="closeModalUser" @ok="closeModalUser"
-            :roles="rolesToShow"
         />
         <Table striped class="max-w-5xl">
             <TableHead>
@@ -96,9 +79,7 @@ defineProps({
                         </Button>
                     </TableCell>
                     <TableCell class="text-center">
-                        <Button outline @click="() => openModalUser(user)">
-                            <svgIcon type="mdi" :path="mdiEye" />
-                        </Button>
+                        {{ user.role.name }}
                     </TableCell>
                     <TableCell class="flex justify-center">
                         <Button color="alternative" @click="() => goToEdit(user)">
